@@ -1,0 +1,34 @@
+﻿.comment-item-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.userInfo .avatar, .userInfo .userInfo--avatar {
+    display: inline-block;
+}
+.userInfo .avatar {
+    vertical-align: middle;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-left: .3333333333rem;
+}
+.userInfo .more {
+    font-size: .8em;
+    display: inline-block;
+    vertical-align: middle;
+}
+.userInfo .name, .userInfo .readTime {
+    display: block;
+}
+.commentText {
+    line-height: 2;
+    font-size:0.8rem;
+}
+.NumberOfCommentLikes{
+    color:gray;
+}
+.NumberOfPostLikes{
+    color:gray;
+}

@@ -1,0 +1,70 @@
+﻿@model UserRegisterViewModel
+
+@{
+    //ViewBag.Title = "ثبت نام";
+    Layout = "_Layout";
+}
+
+<div class="container-fluid">
+    <div class="d-flex flex-column align-items-center justify-content-center">
+
+
+        <div class="card w-100 col-12 col-md-8 col-lg-4 shadow mt-3 shadow ml-1 mr-1">
+            <div class="card-body">
+                <h4 class="card-title mb-5">ایجاد حساب کاربری</h4>
+
+                <div asp-validation-summary="ModelOnly" class="validation-error-message"></div>
+
+                <form asp-action="Register" method="post" autocomplete="off">
+                    <div class="form-group">
+
+                        <input asp-for="ReturnUrl" class="form-control" type="hidden" />
+                    </div>
+                    <div class="form-group">
+
+                        <input asp-for="Code" class="form-control" type="hidden" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Mobile" class="sr-only"></label>
+                        <span asp-validation-for="Mobile" class="validation-error-message"></span>
+                        <input asp-for="Mobile" autocomplete="off" class="form-control" readonly />
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="NickName" class="sr-only"></label>
+                        <span asp-validation-for="NickName" class="validation-error-message"></span>
+                        <input asp-for="NickName" autocomplete="off" class="form-control" />
+                    </div>
+
+
+                    <div class="form-group">
+                        <label asp-for="Password" class="sr-only"></label>
+                        <span asp-validation-for="Password" class="validation-error-message"></span>
+                        <input asp-for="Password" autocomplete="off" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ConfirmPassword" class="sr-only"></label>
+                        <span asp-validation-for="ConfirmPassword" class="validation-error-message"></span>
+                        <input asp-for="ConfirmPassword" autocomplete="off" class="form-control" />
+                    </div>
+
+                    <button class="btn btn-pink">ثبت نام</button>
+
+                    <a asp-action="Login" class="btn btn-link text-decoration-none">
+                        قبلا ثبت نام کرده اید؟
+                    </a>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section ViewScript  {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
+    <!--<script src="~/lib/jquery-ajax-unobtrusive/dist/jquery.unobtrusive-ajax.min.js"></script>-->
+    <script src="~/js/PasswordPage.js"></script>
+
+}
+

@@ -1,0 +1,73 @@
+ {
+  "version": "1.0",
+  "defaultProvider": "unpkg",
+  "libraries": [
+    {
+      "library": "swiper@6.2.0",
+      "destination": "wwwroot/lib/swiper"
+    },
+    {
+      "library": "bootstrap@4.4.1",
+      "destination": "wwwroot/lib/bootstrap"
+    },
+    {
+      "library": "jquery@3.5.1",
+      "destination": "wwwroot/lib/jquery"
+    },
+    {
+      "library": "popper.js@1.16.1",
+      "destination": "wwwroot/lib/propperjs"
+    },
+    {
+      "provider": "filesystem",
+      "library": "D:\\vs\\fontawesome-free-5.13.0-web\\webfonts",
+      "destination": "wwwroot/lib/fontawesome/webfonts/"
+    },
+    {
+      "provider": "filesystem",
+      "library": "D:\\vs\\fontawesome-free-5.13.0-web\\css",
+      "destination": "wwwroot/lib/fontawesome/css"
+    },
+    {
+      "provider": "filesystem",
+      "library": "D:\\vs\\bootstrap-v4-rtl-master\\css",
+      "destination": "wwwroot/lib/bootstrapfa"
+    },
+    {
+      "provider": "filesystem",
+      "library": "D:\\vs\\malihu-custom-scrollbar-plugin-master\\malihu-custom-scrollbar-plugin-master\\js\\minified",
+      "destination": "wwwroot/lib/m-custom-scrollbar/js"
+    },
+    {
+      "provider": "filesystem",
+      "library": "D:\\vs\\malihu-custom-scrollbar-plugin-master\\malihu-custom-scrollbar-plugin-master",
+      "destination": "wwwroot/lib/m-custom-scrollbar/css",
+      "files": [ "jquery.mCustomScrollbar.css", "jquery.mCustomScrollbar.min.css" ]
+    },
+    {
+      "library": "jquery-validation@1.19.2",
+      "destination": "wwwroot/lib/jquery-validation"
+    },
+    {
+      "library": "jquery-validation-unobtrusive@3.2.11",
+      "destination": "wwwroot/lib/jquery-validation-unobtrusive"
+    },
+    {
+      "library": "jquery-ajax-unobtrusive@3.2.6",
+      "destination": "wwwroot/lib/jquery-ajax-unobtrusive"
+
+    },
+    {
+      "library": "jquery-form@4.3.0",
+      "destination": "wwwroot/lib/jquery-form"
+    },
+    {
+      "library": "dropzone@5.7.2",
+      "destination": "wwwroot/lib/dropzone"
+    },
+    {
+      "library": "tinymce@5.9.1",
+        "destination": "wwwroot/lib/tinymce"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+﻿@model Category
+@inject IHashId HashId
+@if (ViewBag.categoryType == 5)
+{
+
+    <a class="pl-3 pr-2 text-decoration-none text-black" href="~/maincategory/AllMainCategory/Product" style="color:black;">محصولات </a>
+
+    <a class="pl-3 pr-2 text-decoration-none text-black" style="color:black;" asp-area="" asp-action="index" asp-controller="MainCategory" asp-route-categoryType="Product" asp-route-hashId=@HashId.Encode(Model.MainCategory.Id) asp-route-maincategoryName=@Model.MainCategory.maincategoryname.Replace(" ", "-")>@Model.MainCategory.maincategoryname</a>
+
+    <a class="text-decoration-none pl-2 pr-3 text-black" style="color:black;" asp-area="" asp-action="Index" asp-controller="Category" asp-route-categoryType="Product" asp-route-categoryHashId=@HashId.Encode(Model.Id)>@Model.Name</a>
+
+}
+else {
+    <a class="pl-3 pr-2 text-decoration-none text-black" asp-area="" asp-action="index" asp-controller="Home" style="color:black;">آموزش ها </a> 
+    <a class="pl-3 pr-2 text-decoration-none text-black" style="color:black;" asp-area="" asp-action="index" asp-controller="MainCategory" asp-route-hashId=@HashId.Encode(Model.MainCategory.Id) asp-route-maincategoryName=@Model.MainCategory.maincategoryname.Replace(" ", "-")>@Model.MainCategory.maincategoryname</a>
+
+    <a class="text-decoration-none pl-2 pr-3 text-black" style="color:black;" asp-area="" asp-action="Index" asp-controller="Category" asp-route-categoryHashId=@HashId.Encode(Model.Id)>@Model.Name</a>
+}

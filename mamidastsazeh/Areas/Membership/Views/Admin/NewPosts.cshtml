@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Post>
+@inject IHashId hashId;
+@{
+
+    Layout = "_Layout";
+}
+
+<div class="row no-gutters">
+    <aside class=" col-3 d-md-flex align-items-stretch mt-5">
+        <partial name="_PanelMenu" />
+    </aside>
+    <main class="col-9">
+
+
+        <div class="d-flex justify-content-center w-100">
+            <table class="table table-striped table-bordered text-center w-100">
+                <thead>
+                    <tr>
+
+                        <th>عنوان</th>
+                        <th>کاربر</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var post in Model)
+                    {
+
+                        <tr class="PostRow">
+
+                            <td>@post.Title</td>
+                            <td>
+
+                                @post.User.NickName
+
+
+                            </td>
+
+
+                            <td>
+                                <a asp-area="" asp-action="Index" asp-controller="Post" asp-route-hashId="@hashId.Encode(post.ID)">
+                                    بررسی
+                                </a>
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+</div>
+
+@section ViewScript{
+    <script src="~/js/Managment.min.js"></script>
+
+}

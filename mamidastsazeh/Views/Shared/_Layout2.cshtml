@@ -1,0 +1,76 @@
+﻿@inject IHashId HashId;
+
+<!DOCTYPE html>
+
+<html lang="fa">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-178741593-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-178741593-1');
+    </script>
+
+
+    <link rel="apple-touch-icon" href="/images/pwa192.png">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+    <title>مامی دستسازه|آموزش هنرهای خانگی مادر و کودک</title>
+
+    <meta property="description" content="مامی دست سازه پرتال جامع آموزش هنر های خانگی سمیه آقاجانی رقیه آقاجانی Somayeh Aghajani Roghayeh Aghajani">
+    <meta name="keywords"
+          content="رنگ , آموزش دست سازه, آموزش کاردستی , دکوپاژ,  دانلود تم تولد,  ساخت , بازسازی ,  ایده های کسب و کار خانگی,  هنری,  ایرانی, mamidastsaz, مامی دستساز ,  mamidastsazeh, Roghayeh Aghajani , Somayeh Aghajani ,اینستاگرام ,  مادرانه ,  بانوان, سیمه آقاجانی , رقیه آقاجانی" />
+
+    <link rel="stylesheet" href="~/lib/fonts/Yekan.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/fontawesome/css/all.min.css" />
+
+    <link rel="stylesheet" href="~/css/Layout.min.css" />
+    <link rel="stylesheet" href="~/css/PostSlider.min.css" />
+    <link rel="stylesheet" href="~/css/Auth.min.css" />
+
+
+    <link rel="stylesheet" href="~/css/Post.min.css" />
+    <link rel="shortcut icon" href="~/images/favicon.ico">
+    <link rel="icon" type="image/gif" href="~/images/animated_favicon1.gif">
+    <link rel="stylesheet" href="~/css/myswipper.min.css" />
+
+    <link rel="stylesheet" href="~/lib/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="~/css/mymenu.min.css">
+    <link rel="stylesheet" href="~/css/ProfileDropDown.min.css">
+    <link rel="stylesheet" href="~/lib/m-custom-scrollbar/css/jquery.mCustomScrollbar.min.css" />
+    @await RenderSectionAsync("ViewStyleSheet", required: false)
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/swiper/swiper-bundle.min.js"></script>
+    <script src="~/lib/propperjs/dist/umd/popper.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/js/MySwiper.min.js"></script>
+    <script src="~/js/mymenu.min.js"></script>
+    <script src="~/js/jquery.mousewheel.min.js"></script>
+    <script async src="~/lib/m-custom-scrollbar/js/jquery.mCustomScrollbar.min.js"></script>
+
+    @await RenderSectionAsync("ViewScript", required: false)
+
+</head>
+<body style="background:#EAE7E7">
+    <header class="layout-header">
+
+       
+
+
+    </header>
+    <main>
+        @RenderBody()
+    </main>
+    
+    
+</body>
+</html>
+

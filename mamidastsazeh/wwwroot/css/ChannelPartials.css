@@ -1,0 +1,27 @@
+﻿.channel-profile, .category-profile {
+    margin-bottom: 1.5rem;
+}
+
+    .channel-profile a, .category-profile a {
+        text-decoration: none;
+        color: #323233;
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+    }
+
+        .channel-profile a:hover, .channel-profile a:visited, .category-profile a:hover, .category-profile a:visited {
+            text-decoration: none;
+        }
+
+    .channel-profile .channel-profile-image {
+        display: inline-flex;
+        width: 2.5rem;
+        height: 2.5rem;
+        margin-left: .5rem;
+        border: 1px solid #e7e7e7;
+        border-radius: 50%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+    }

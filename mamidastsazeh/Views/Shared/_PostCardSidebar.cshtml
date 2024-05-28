@@ -1,0 +1,68 @@
+﻿@model Post
+
+@inject IHashId HashId
+
+@{
+    bool isUser = (bool)(ViewData["isUser"] as bool? ?? false);
+    bool isSearch = (bool)(ViewData["isSearch"] as bool? ?? false);
+    var thumbnail = 6;
+    var info = 6;
+    var marginBottom = "";
+    if (isSearch)
+    {
+        thumbnail = 4;
+        info = 8;
+        marginBottom = "mb-3";
+    }
+    
+}
+    <div class="row @marginBottom">
+        <div class="col-@thumbnail  pl-0">
+            <div class="video-thumbnail-container mb-0">
+                <a asp-area="" asp-controller="Post" asp-action="Index" asp-route-hashId=@HashId.Encode(Model.ID) asp-route-text=@Model.Title.Replace(" ","-")
+                   class="video-thumbnail">
+                    <img src="~/@Model.Thumbnail" class="video-thumbnail" alt="PostCardImage" />
+                    <!--span class="video-ratio video-slider-ratio"></span-->
+                    <like class="video-likes">
+                        @if (Model.PostTypeID != 5)
+                        {
+                            <i class="fas fa-heart small" style="color:red"></i>
+                            @Model.NumberOfLikes.ToString().ToPersianDigits()
+                        }
+                        else
+                        {
+                            <i class="fa fa-money-bill fa-1x" style="color:cornflowerblue;"></i>
+
+                            @Model.DiscountPrice.ToString().ToPersianDigits()
+
+                        }
+                    </like>
+                    <span class="video-veiws">
+                     
+                            <i class="fas fa-eye small" style="color:white"></i>
+                            @Model.NumberOfViews.ToString().ToPersianDigits()
+                       
+                    </span>
+                </a>
+            </div>
+        </div>
+        <div class="col-@info pr-0">
+            <div class="video-info-container mr-1 ml-1 ">
+                <a asp-area="" asp-controller="Post" asp-action="Index" asp-route-hashId=@HashId.Encode(Model.ID) asp-route-text=@Model.Title.Replace(" ","-") class="video-title">
+                    @Model.Title
+                </a>
+                <a href="#" class="video-category">
+                    <span class="video-category-info">
+                        <i class="fas fa-video"></i>
+                        
+                        @if (!isSearch)
+                        {
+                            <span>@Model.Category.Name</span>
+                        }
+
+                    </span>
+                </a>
+                <video-created created="Model.Created"></video-created>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,25 @@
+﻿
+@{
+    Layout = null;
+}
+
+<div class="upload-video d-flex">
+    <a class="btn btn-outline-primary btn-pink" asp-action="UploadPost" asp-controller="Panel" asp-area="Membership" style="border-width:1px;border-color:hotpink;">
+        <span>
+            <i class="fas fa-cloud-upload-alt"></i>
+            <span class="upload-video-text">ارسال آموزش</span>
+        </span>
+    </a>
+    <a class="btn btn-outline-primary btn-pink mr-1" asp-action="UploadPost" asp-route-postType="Product" asp-controller="Panel" asp-area="Membership" style="border-width:1px;border-color:hotpink;">
+        <span>
+            <i class="fas fa-shopping-basket"></i>
+            <span class="upload-video-text">شرکت در بازارچه</span>
+        </span>
+    </a>
+</div>
+<div class="signin-button">
+    <a asp-area="Membership" asp-controller="Account" asp-action="Login">
+        <i class="fas fa-user"></i>
+        <span>ورود / ثبت نام</span>
+    </a>
+</div>

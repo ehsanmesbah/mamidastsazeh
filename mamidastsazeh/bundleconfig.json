@@ -1,0 +1,266 @@
+[
+  {
+    "outputFileName": "wwwroot/js/VideoSlider.min.js",
+    "inputFiles": [
+      "wwwroot/js/VideoSlider.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/Featured.min.css",
+    "inputFiles": [
+      "wwwroot/css/Featured.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Featured.min.js",
+    "inputFiles": [
+      "wwwroot/js/Featured.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/PostSlider.min.css",
+    "inputFiles": [
+      "wwwroot/css/PostSlider.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/index.min.js",
+    "inputFiles": [
+      "wwwroot/js/index.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/VideoPartials.min.css",
+    "inputFiles": [
+      "wwwroot/css/VideoPartials.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/ImagePlayer.min.css",
+    "inputFiles": [
+      "wwwroot/css/ImagePlayer.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/Image1.min.css",
+    "inputFiles": [
+      "wwwroot/css/Image1.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/JavaScript.min.js",
+    "inputFiles": [
+      "wwwroot/js/JavaScript.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/SearchPage.min.css",
+    "inputFiles": [
+      "wwwroot/css/SearchPage.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/SearchPage.min.js",
+    "inputFiles": [
+      "wwwroot/js/SearchPage.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/lib/propperjs/dist/popper.min.js",
+    "inputFiles": [
+      "wwwroot/lib/propperjs/dist/popper.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/lib/propperjs/dist/umd/popper.min.js",
+    "inputFiles": [
+      "wwwroot/lib/propperjs/dist/umd/popper.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/extra.min.css",
+    "inputFiles": [
+      "wwwroot/css/extra.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/MyNavBar.min.css",
+    "inputFiles": [
+      "wwwroot/css/MyNavBar.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/Post.min.css",
+    "inputFiles": [
+      "wwwroot/css/Post.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/lib/Fonts/Yekan.min.css",
+    "inputFiles": [
+      "wwwroot/lib/Fonts/Yekan.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/navbar.min.js",
+    "inputFiles": [
+      "wwwroot/js/navbar.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/Layout.min.css",
+    "inputFiles": [
+      "wwwroot/css/Layout.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/ChannelPartials.min.css",
+    "inputFiles": [
+      "wwwroot/css/ChannelPartials.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/VideoPlayer.min.css",
+    "inputFiles": [
+      "wwwroot/css/VideoPlayer.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/myswipper.min.css",
+    "inputFiles": [
+      "wwwroot/css/myswipper.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/MySwiper.min.js",
+    "inputFiles": [
+      "wwwroot/js/MySwiper.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/Auth.min.css",
+    "inputFiles": [
+      "wwwroot/css/Auth.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/ProfileDropDown.min.css",
+    "inputFiles": [
+      "wwwroot/css/ProfileDropDown.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Register.min.js",
+    "inputFiles": [
+      "wwwroot/js/Register.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/mymenu.min.css",
+    "inputFiles": [
+      "wwwroot/css/mymenu.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/UploadVideo.min.css",
+    "inputFiles": [
+      "wwwroot/css/UploadVideo.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/PagedList.min.css",
+    "inputFiles": [
+      "wwwroot/css/PagedList.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/LikeComment.min.js",
+    "inputFiles": [
+      "wwwroot/js/LikeComment.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Managment.min.js",
+    "inputFiles": [
+      "wwwroot/js/Managment.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/mymenu.min.js",
+    "inputFiles": [
+      "wwwroot/js/mymenu.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/UploadFile.min.js",
+    "inputFiles": [
+      "wwwroot/js/UploadFile.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/UploadPost.min.js",
+    "inputFiles": [
+      "wwwroot/js/UploadPost.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/userSetting.min.js",
+    "inputFiles": [
+      "wwwroot/js/userSetting.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/PostComment.min.css",
+    "inputFiles": [
+      "wwwroot/css/PostComment.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/AboutMe.min.css",
+    "inputFiles": [
+      "wwwroot/css/AboutMe.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/UploadPostProduct.min.js",
+    "inputFiles": [
+      "wwwroot/js/UploadPostProduct.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/ImageSwiper.min.js",
+    "inputFiles": [
+      "wwwroot/js/ImageSwiper.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/ImageSwiper.min.css",
+    "inputFiles": [
+      "wwwroot/css/ImageSwiper.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/NewMenu.min.js",
+    "inputFiles": [
+      "wwwroot/js/NewMenu.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/NewMenu.min.css",
+    "inputFiles": [
+      "wwwroot/css/NewMenu.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/jquery.smartmenus.min.js",
+    "inputFiles": [
+      "wwwroot/js/jquery.smartmenus.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/index.min.css",
+    "inputFiles": [
+      "wwwroot/css/index.css"
+    ]
+  }
+]

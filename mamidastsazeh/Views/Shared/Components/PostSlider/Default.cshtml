@@ -1,0 +1,32 @@
+﻿@model PostSliderViewModel
+
+<div class="container-fluid slider-container w-100" data-category-id="@Model.Category.Id">
+    <h2>
+        <a href="#">
+            @Model.postListType
+        </a>
+    </h2>
+    <button class="btn btn-pink prev d-none">
+        <i class="fas fa-chevron-right"></i>
+    </button>
+    <button class="btn btn-pink next">
+        <i class="fas fa-chevron-left"></i>
+    </button>
+
+    <div class="thumbnail-container overflow-hidden">
+        <div class="row flex-nowrap mb-2 pl-2 pr-2">
+            @foreach (var post in Model.Posts)
+            {
+                <div class="col-6 col-md-3 ml-0 mr-0">
+                    <div class="  post-card ">
+                        @{
+                            await Html.RenderPartialAsync("_PostCard", post);
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    
+
+</div>

@@ -1,0 +1,75 @@
+﻿
+@model IEnumerable<User>
+@inject IHashId HashId
+<!-- main cat-->
+<div class="col-12 mt-2 mb-2">
+    <!-- Menu Level 2 -->
+    <table class="table table-striped table-bordered text-center">
+        <thead>
+            <tr>
+
+                <th class="mytable-td">کاربر</th>
+
+                <th class="mytable-td">ارسال های ماه</th>
+                <th class="mytable-td">کل ارسال ها</th>
+                <th class="mytable-td">آخرین ارسال</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+
+            <tr class="PostRow">
+
+                <td class="mytable-td">
+                    <a class="" asp-area="" asp-controller="UserPosts" asp-action="Index" asp-route-nickName="@item.NickName" asp-route-page="1" asp-route-pageType="UserPosts" asp-route-sortorder="Created-desc">
+
+                        <img class="profile-image" src=@("/ProfileImages/" + (string.IsNullOrEmpty(item.ProfileImage) ? "default.gif" : item.ProfileImage)) alt="Profile-Image" />
+
+                        @item.NickName
+
+                    </a>
+                </td>
+                <td class="mytable-td">
+                    @{
+                        var post30count = item.Posts.Where(p => p.UserId == item.Id && p.Poststate == PostState.Approved && p.Created>DateTime.Now.AddDays(-30)).Count();
+                        <div>
+                            @post30count
+                        </div>
+                    }
+                </td>
+                <td class="mytable-td">
+                    @{
+                        var postCount = item.Posts.Where(p => p.UserId == item.Id && p.Poststate == PostState.Approved).Count();
+                        <div>
+                            @postCount
+                        </div>
+                    }
+                </td>
+                
+
+                <td class="mytable-td">
+                    <div>
+                        @{
+                            var post = item.Posts.Where(p => p.UserId == item.Id && p.Poststate == PostState.Approved).OrderByDescending(p => p.Created).FirstOrDefault();
+
+                            if (post != null && !string.IsNullOrEmpty(post.Title))
+                            {
+
+                                <a class="home-comment-user-card-item " asp-area="" asp-action="index" asp-controller="Post" asp-route-hashId=@HashId.Encode(post.ID)>
+                                    <span class="ml-1">آخرین ارسال:</span>@post.Title
+                                </a>
+
+                            }
+                        }
+                    </div>
+
+                </td>
+
+
+            </tr>
+            }
+        </tbody>
+    </table>
+    
+</div>

@@ -1,0 +1,26 @@
+﻿{
+  "name": "مامی دست سازه",
+  "short_name": "مامی دستسازه",
+  "description": "پرتال مامی دست سازه",
+  "theme_color": "#FFFFFF",
+  "background_color": "#FFFFFF",
+
+  "icons": [
+    {
+      "src": "/images/pwa192.png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+
+    },
+    {
+      "src": "/images/pwa512.png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "/images/pwa144.png",
+      "sizes": "144x144"
+    }
+  ],
+  "display": "standalone",
+  "start_url": "/"
+}

@@ -1,0 +1,270 @@
+﻿@inject IHashId HashId;
+
+<!DOCTYPE html>
+
+<html lang="fa">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-178741593-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-178741593-1');
+    </script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    @if (ViewData["title"] == null || ViewData["title"].ToString() == "")
+    {
+
+        <title>آموزش هنرهای خانگی مادر و کودک</title>
+    }
+    else
+    {
+        <title>@ViewData["title"]</title>
+    }
+
+    <link rel="stylesheet" href="~/lib/fonts/Yekan.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/fontawesome/css/all.min.css" />
+
+    <link rel="stylesheet" href="~/css/Layout.min.css" />
+    <link rel="stylesheet" href="~/css/PostSlider.min.css" />
+    <link rel="stylesheet" href="~/css/Auth.min.css" />
+
+
+    <link rel="stylesheet" href="~/css/Post.min.css" />
+    <link rel="shortcut icon" href="~/images/favicon.ico">
+    <link rel="icon" type="image/gif" href="~/images/animated_favicon1.gif">
+    <link rel="stylesheet" href="~/css/myswipper.min.css" />
+
+    <link rel="stylesheet" href="~/lib/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="~/css/mymenu.min.css">
+    <link rel="stylesheet" href="~/css/ProfileDropDown.min.css">
+    <link rel="stylesheet" href="~/lib/m-custom-scrollbar/css/jquery.mCustomScrollbar.min.css" />
+    @await RenderSectionAsync("ViewStyleSheet", required: false)
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/swiper/swiper-bundle.min.js"></script>
+    <script src="~/lib/propperjs/dist/umd/popper.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/js/MySwiper.min.js"></script>
+    <script src="~/js/mymenu.min.js"></script>
+    <script src="~/lib/m-custom-scrollbar/js/jquery.mCustomScrollbar.min.js"></script>
+    @await RenderSectionAsync("ViewScript", required: false)
+    <meta name="description"
+          content="مر جع آموزش هنری دست سازه ساز جهت بانوان مادران رنگ آمیزی دکوپاژ دانلود دکوری تزئینات کاردستی عید دانلود تم تولد" />
+    <meta name="keywords"
+          content="رنگ , آموزش دست سازه, آموزش کاردستی , دکوپاژ,  دانلود تم تولد,  ساخت , بازسازی ,  ایده های کسب و کار خانگی,  هنری,  ایرانی, mamidastsaz, مامی دستساز ,  mamidastsazeh, اینستاگرام ,  مادرانه ,  بانوان" />
+</head>
+<body>
+    <header class="layout-header">
+
+        <nav class="navbar navbar-expand-sm py-0 pt-3 pt-md-1 pb-0" style="background-color: #FFFFFF ; position:relative;">
+            <div class="container d-flex justify-content-between px-1 px-md-2 px-lg-5 py-1">
+                <div class="d-flex justify-content-start align-items-center">
+                    <a href="https://mamidastsazeh.com" class="logo ml-2">
+                        <img src="~/images/loggo-mamidastsazeh.jpg" alt="مامی دست سازه" class="rounded-pill" />
+                    </a>
+
+
+                </div>
+                <div class="search-container d-none d-md-block position-relative">
+                    <div class="search d-none d-md-flex">
+                        <input type="text" class="form-control" placeholder="جستجوی آموزش ها  ..." />
+                        <a href="#" class="search-submit pl-4">
+                            <i class="fas fa-search"></i>
+                        </a>
+                    </div>
+                    <div class="search-suggest" style="z-index:1100;"></div>
+                    <div class="search-overlay" style="z-index:1099;"></div>
+                </div>
+                <div class="d-flex align-items-center">
+                    <vc:profile-drop-down></vc:profile-drop-down>
+
+                </div>
+            </div>
+
+        </nav>
+        <div class="mobile-nav">
+            
+            <a href="#" class="col-6 toggle-btn" id="toggle" style="padding-top: 10px;align-items:center;">
+                <img src="~/images/dastebandi.png" alt="دسته بندی" style="width:100%;" />
+            </a>
+            <a href="https://mamidastsazeh.com" class="col-6 toggle-help" style="padding-top: 10px; align-items: center;"><img src="~/images/menulogonew.png" alt="مامی دست سازه" style="width:100%;"/></a>
+        </div>
+        <nav class="navigation" style="z-index:1000;">
+            <div class="container">
+                <ul class="menu-level-1">
+                    <!-- Menu Level 1 -->
+                    <li class="menu-list-1">
+                        <a href="#" class="list-item">
+
+                            <span>پست های آموزشی</span>
+                            <img class="item-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RDk0RkNCNDM2MzQxMTFFOEI1MUFDRDZDQjE0NzU5MDIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RDk0RkNCNDQ2MzQxMTFFOEI1MUFDRDZDQjE0NzU5MDIiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpEOTRGQ0I0MTYzNDExMUU4QjUxQUNENkNCMTQ3NTkwMiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpEOTRGQ0I0MjYzNDExMUU4QjUxQUNENkNCMTQ3NTkwMiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Ph5XIYQAAAGGSURBVHja7Ni/SsNAHAfwJINDl+IYBKFLN6E4OqpvIOQVDHmJ+BCF/Nm7ZHRwEnFwVVx8AUcXd4ek3wttadPcXe7ud9LCHRyXEJLfJ1xy+f3iN03jHXILvANvDuiADnjsQE+0DqZp+i83wIvDbFxAURRXYRh+lmU5sYnL8/wGcd6zLDsbPMUMh+HJ9/2Luq5fbSEZDsMj4szQX/qQAQ+HPmb7OPHcBnILN1rFmfYhAxFu3aiRXdxWnD1kIMNRI3k4HrIFVlV1gmHBw1EhZbgOcr4BRlH0h1f6Dpu/siC6yKG41fLyhRj3O1Mcx/EHDtzaQGrgrpMk+dl7SWwgTXC9ywwl0hTHXagpkBQ4YbJggqTCtddmH2RcSPQMXeL4MzZPBwT7xvCAPqfAtTYZUBWpkEUJcdJsRne6qXDKCSsVUgWnnFGbIlVxWim/LlIHp12TqCJ1cUZF01CkCc64qpMhTXEkZScPSYEjq4u7SCocaeG+RqK/UeE232L368MBHdAB7bWlAAMAsnuuO02lpAMAAAAASUVORK5CYII=" alt="">
+                        </a>
+                        <vc:main-categories list-type="All" strid=0></vc:main-categories>
+                    </li>
+                    <li class="menu-list-1">
+                        <a href="#" class="list-item">
+
+                            <span>ویژه ها</span>
+                            <img class="item-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RDk0RkNCNDM2MzQxMTFFOEI1MUFDRDZDQjE0NzU5MDIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RDk0RkNCNDQ2MzQxMTFFOEI1MUFDRDZDQjE0NzU5MDIiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpEOTRGQ0I0MTYzNDExMUU4QjUxQUNENkNCMTQ3NTkwMiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpEOTRGQ0I0MjYzNDExMUU4QjUxQUNENkNCMTQ3NTkwMiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Ph5XIYQAAAGGSURBVHja7Ni/SsNAHAfwJINDl+IYBKFLN6E4OqpvIOQVDHmJ+BCF/Nm7ZHRwEnFwVVx8AUcXd4ek3wttadPcXe7ud9LCHRyXEJLfJ1xy+f3iN03jHXILvANvDuiADnjsQE+0DqZp+i83wIvDbFxAURRXYRh+lmU5sYnL8/wGcd6zLDsbPMUMh+HJ9/2Luq5fbSEZDsMj4szQX/qQAQ+HPmb7OPHcBnILN1rFmfYhAxFu3aiRXdxWnD1kIMNRI3k4HrIFVlV1gmHBw1EhZbgOcr4BRlH0h1f6Dpu/siC6yKG41fLyhRj3O1Mcx/EHDtzaQGrgrpMk+dl7SWwgTXC9ywwl0hTHXagpkBQ4YbJggqTCtddmH2RcSPQMXeL4MzZPBwT7xvCAPqfAtTYZUBWpkEUJcdJsRne6qXDKCSsVUgWnnFGbIlVxWim/LlIHp12TqCJ1cUZF01CkCc64qpMhTXEkZScPSYEjq4u7SCocaeG+RqK/UeE232L368MBHdAB7bWlAAMAsnuuO02lpAMAAAAASUVORK5CYII=" alt="">
+                        </a>
+
+                        <ul class="menu-level-2">
+                            <!-- Menu Level 2 -->
+                            <li class="menu-list-2">
+                                <a asp-action="Index" asp-controller="SpecialPost" asp-route-pageType="new" asp-route-pageNumber=1 class="list-item">
+                                    <img src="data:image/png;base64,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" alt="mobile">
+                                    <span>جدیدترین</span>
+                                </a>
+                            </li>
+                            <li class="menu-list-2">
+                                <a asp-action="Index" asp-controller="SpecialPost" asp-route-pageType="mostview" asp-route-pageNumber=1 class="list-item">
+                                    <img src="data:image/png;base64,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" alt="mobile">
+                                    <span>پر بازدیدترین</span>
+                                </a>
+                            </li>
+                            <li class="menu-list-2">
+                                <a asp-action="Index" asp-controller="SpecialPost" asp-route-pageType="mostlike" asp-route-pageNumber=1 class="list-item">
+                                    <img src="data:image/png;base64,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" alt="mobile">
+                                    <span>بیشترین لایک</span>
+                                </a>
+                            </li>
+                            <li class="menu-list-2">
+                                <a asp-action="Index" asp-controller="SpecialPost" asp-route-pageType="mostcomment" class="list-item">
+                                    <img src="data:image/png;base64,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" alt="mobile">
+                                    <span>بیشترین کامنت</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu-list-1">
+                        <a class="list-item" asp-action="Index" asp-controller="SearchPage">
+
+                            <span>جستجوی پیشرفته</span>
+                            <img class="item-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RDk0RkNCNDM2MzQxMTFFOEI1MUFDRDZDQjE0NzU5MDIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RDk0RkNCNDQ2MzQxMTFFOEI1MUFDRDZDQjE0NzU5MDIiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpEOTRGQ0I0MTYzNDExMUU4QjUxQUNENkNCMTQ3NTkwMiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpEOTRGQ0I0MjYzNDExMUU4QjUxQUNENkNCMTQ3NTkwMiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Ph5XIYQAAAGGSURBVHja7Ni/SsNAHAfwJINDl+IYBKFLN6E4OqpvIOQVDHmJ+BCF/Nm7ZHRwEnFwVVx8AUcXd4ek3wttadPcXe7ud9LCHRyXEJLfJ1xy+f3iN03jHXILvANvDuiADnjsQE+0DqZp+i83wIvDbFxAURRXYRh+lmU5sYnL8/wGcd6zLDsbPMUMh+HJ9/2Luq5fbSEZDsMj4szQX/qQAQ+HPmb7OPHcBnILN1rFmfYhAxFu3aiRXdxWnD1kIMNRI3k4HrIFVlV1gmHBw1EhZbgOcr4BRlH0h1f6Dpu/siC6yKG41fLyhRj3O1Mcx/EHDtzaQGrgrpMk+dl7SWwgTXC9ywwl0hTHXagpkBQ4YbJggqTCtddmH2RcSPQMXeL4MzZPBwT7xvCAPqfAtTYZUBWpkEUJcdJsRne6qXDKCSsVUgWnnFGbIlVxWim/LlIHp12TqCJ1cUZF01CkCc64qpMhTXEkZScPSYEjq4u7SCocaeG+RqK/UeE232L368MBHdAB7bWlAAMAsnuuO02lpAMAAAAASUVORK5CYII=" alt="">
+                        </a>
+                    </li>
+
+                    <li class="menu-list-1">
+                        <a class="list-item" asp-action="Index" asp-controller="MainCategory" asp-route-hashId=@HashId.Encode(6) asp-route-categoryName="دانلود">
+                            <span>دانلود</span>
+                            <img class="item-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RDk0RkNCNDM2MzQxMTFFOEI1MUFDRDZDQjE0NzU5MDIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RDk0RkNCNDQ2MzQxMTFFOEI1MUFDRDZDQjE0NzU5MDIiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpEOTRGQ0I0MTYzNDExMUU4QjUxQUNENkNCMTQ3NTkwMiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpEOTRGQ0I0MjYzNDExMUU4QjUxQUNENkNCMTQ3NTkwMiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Ph5XIYQAAAGGSURBVHja7Ni/SsNAHAfwJINDl+IYBKFLN6E4OqpvIOQVDHmJ+BCF/Nm7ZHRwEnFwVVx8AUcXd4ek3wttadPcXe7ud9LCHRyXEJLfJ1xy+f3iN03jHXILvANvDuiADnjsQE+0DqZp+i83wIvDbFxAURRXYRh+lmU5sYnL8/wGcd6zLDsbPMUMh+HJ9/2Luq5fbSEZDsMj4szQX/qQAQ+HPmb7OPHcBnILN1rFmfYhAxFu3aiRXdxWnD1kIMNRI3k4HrIFVlV1gmHBw1EhZbgOcr4BRlH0h1f6Dpu/siC6yKG41fLyhRj3O1Mcx/EHDtzaQGrgrpMk+dl7SWwgTXC9ywwl0hTHXagpkBQ4YbJggqTCtddmH2RcSPQMXeL4MzZPBwT7xvCAPqfAtTYZUBWpkEUJcdJsRne6qXDKCSsVUgWnnFGbIlVxWim/LlIHp12TqCJ1cUZF01CkCc64qpMhTXEkZScPSYEjq4u7SCocaeG+RqK/UeE232L368MBHdAB7bWlAAMAsnuuO02lpAMAAAAASUVORK5CYII=" alt="">
+                        </a>
+                    </li>
+                    @if (!Context.User.Identity.IsAuthenticated)
+                    {
+                        <li class="menu-list-1">
+
+                            <a class="list-item" asp-area="Membership" asp-controller="Account" asp-action="VerifyMobile">
+
+                                <span>ثبت نام</span>
+                                <img class="item-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RDk0RkNCNDM2MzQxMTFFOEI1MUFDRDZDQjE0NzU5MDIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RDk0RkNCNDQ2MzQxMTFFOEI1MUFDRDZDQjE0NzU5MDIiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpEOTRGQ0I0MTYzNDExMUU4QjUxQUNENkNCMTQ3NTkwMiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpEOTRGQ0I0MjYzNDExMUU4QjUxQUNENkNCMTQ3NTkwMiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Ph5XIYQAAAGGSURBVHja7Ni/SsNAHAfwJINDl+IYBKFLN6E4OqpvIOQVDHmJ+BCF/Nm7ZHRwEnFwVVx8AUcXd4ek3wttadPcXe7ud9LCHRyXEJLfJ1xy+f3iN03jHXILvANvDuiADnjsQE+0DqZp+i83wIvDbFxAURRXYRh+lmU5sYnL8/wGcd6zLDsbPMUMh+HJ9/2Luq5fbSEZDsMj4szQX/qQAQ+HPmb7OPHcBnILN1rFmfYhAxFu3aiRXdxWnD1kIMNRI3k4HrIFVlV1gmHBw1EhZbgOcr4BRlH0h1f6Dpu/siC6yKG41fLyhRj3O1Mcx/EHDtzaQGrgrpMk+dl7SWwgTXC9ywwl0hTHXagpkBQ4YbJggqTCtddmH2RcSPQMXeL4MzZPBwT7xvCAPqfAtTYZUBWpkEUJcdJsRne6qXDKCSsVUgWnnFGbIlVxWim/LlIHp12TqCJ1cUZF01CkCc64qpMhTXEkZScPSYEjq4u7SCocaeG+RqK/UeE232L368MBHdAB7bWlAAMAsnuuO02lpAMAAAAASUVORK5CYII=" alt="">
+                            </a>
+                        </li>
+                    }
+                    @if (Context.User.Identity.IsAuthenticated)
+                    {
+                        <li class="menu-list-1">
+
+                            <a class="list-item" asp-area="Membership" asp-controller="Panel" asp-action="UserSettings">
+
+                                <span>ناحیه کاربری</span>
+                                <img class="item-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RDk0RkNCNDM2MzQxMTFFOEI1MUFDRDZDQjE0NzU5MDIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RDk0RkNCNDQ2MzQxMTFFOEI1MUFDRDZDQjE0NzU5MDIiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpEOTRGQ0I0MTYzNDExMUU4QjUxQUNENkNCMTQ3NTkwMiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpEOTRGQ0I0MjYzNDExMUU4QjUxQUNENkNCMTQ3NTkwMiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Ph5XIYQAAAGGSURBVHja7Ni/SsNAHAfwJINDl+IYBKFLN6E4OqpvIOQVDHmJ+BCF/Nm7ZHRwEnFwVVx8AUcXd4ek3wttadPcXe7ud9LCHRyXEJLfJ1xy+f3iN03jHXILvANvDuiADnjsQE+0DqZp+i83wIvDbFxAURRXYRh+lmU5sYnL8/wGcd6zLDsbPMUMh+HJ9/2Luq5fbSEZDsMj4szQX/qQAQ+HPmb7OPHcBnILN1rFmfYhAxFu3aiRXdxWnD1kIMNRI3k4HrIFVlV1gmHBw1EhZbgOcr4BRlH0h1f6Dpu/siC6yKG41fLyhRj3O1Mcx/EHDtzaQGrgrpMk+dl7SWwgTXC9ywwl0hTHXagpkBQ4YbJggqTCtddmH2RcSPQMXeL4MzZPBwT7xvCAPqfAtTYZUBWpkEUJcdJsRne6qXDKCSsVUgWnnFGbIlVxWim/LlIHp12TqCJ1cUZF01CkCc64qpMhTXEkZScPSYEjq4u7SCocaeG+RqK/UeE232L368MBHdAB7bWlAAMAsnuuO02lpAMAAAAASUVORK5CYII=" alt="">
+                            </a>
+                        </li>
+                        <li class="menu-list-1">
+
+                            <a class="list-item" asp-area="Membership" asp-controller="Account" asp-action="Logout">
+
+                                <span>خروج</span>
+                                <img class="item-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RDk0RkNCNDM2MzQxMTFFOEI1MUFDRDZDQjE0NzU5MDIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RDk0RkNCNDQ2MzQxMTFFOEI1MUFDRDZDQjE0NzU5MDIiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpEOTRGQ0I0MTYzNDExMUU4QjUxQUNENkNCMTQ3NTkwMiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpEOTRGQ0I0MjYzNDExMUU4QjUxQUNENkNCMTQ3NTkwMiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Ph5XIYQAAAGGSURBVHja7Ni/SsNAHAfwJINDl+IYBKFLN6E4OqpvIOQVDHmJ+BCF/Nm7ZHRwEnFwVVx8AUcXd4ek3wttadPcXe7ud9LCHRyXEJLfJ1xy+f3iN03jHXILvANvDuiADnjsQE+0DqZp+i83wIvDbFxAURRXYRh+lmU5sYnL8/wGcd6zLDsbPMUMh+HJ9/2Luq5fbSEZDsMj4szQX/qQAQ+HPmb7OPHcBnILN1rFmfYhAxFu3aiRXdxWnD1kIMNRI3k4HrIFVlV1gmHBw1EhZbgOcr4BRlH0h1f6Dpu/siC6yKG41fLyhRj3O1Mcx/EHDtzaQGrgrpMk+dl7SWwgTXC9ywwl0hTHXagpkBQ4YbJggqTCtddmH2RcSPQMXeL4MzZPBwT7xvCAPqfAtTYZUBWpkEUJcdJsRne6qXDKCSsVUgWnnFGbIlVxWim/LlIHp12TqCJ1cUZF01CkCc64qpMhTXEkZScPSYEjq4u7SCocaeG+RqK/UeE232L368MBHdAB7bWlAAMAsnuuO02lpAMAAAAASUVORK5CYII=" alt="">
+                            </a>
+                        </li>
+                    }
+
+
+                </ul><!-- End Menu Level 1 -->
+            </div>
+        </nav>
+
+
+
+    </header>
+    <main>
+        @RenderBody()
+    </main>
+    <footer>
+        <div class="container-fluid bg-light">
+            <div class="container">
+                <div class="row py-5">
+                    <div class="col-md-6 col-lg-4 mb-5 mb-md-0">
+                        <div class="container">
+
+                            <div class="row mb-2 mb-md-4">
+                                <div class="col p-0">
+                                    <p class="text-muted small">در مامی دست سازه شما قادر خواهید بود آموزش های دست سازه های خود را با دیگران به اشتراک بگذارید.</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col p-0">
+                                    <a class="btn btn-pink btn-sm w-100">
+                                        <span>
+                                            <i class="fas fa-user-plus"></i>
+                                            <span class="btn-pink-text">به مامی دست سازه بپیوندید</span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 mb-5 mb-md-0">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col p-0 extra-links">
+                                    <h5>دیگر صفحات مامی دست سازه</h5>
+                                    <ul class="list-unstyled">
+                                        <li><a href="#">تبلیغات</a></li>
+                                        <li><a href="#">قوانین</a></li>
+                                        <li><a href="#">تماس با ما</a></li>
+                                        <li><a href="#">به ما پیوندید</a></li>
+                                        <li><a href="#">پرسش های متداول</a></li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid footer-bottom">
+            <div class="container px-0 py-5">
+                <div class="row no-gutters">
+                    <div class="col-12 col-sm-10 col-md-7 col-lg-5 col-xl-5 offset-xl-4 mx-auto mx-xl-0 ml-xl-auto">
+                        <p class="text-muted small text-center text-xl-right copyright">مسئولیت محتوای ویدئوها و هرگونه پاسخگویی به ادعاهای مطروحه توسط اشخاص حقیقی و حقوقی با منتشر کننده است و مامی دست سازه هیچگونه مسئولیتی نسبت به آن ندارد.</p>
+                    </div>
+                    <div class="w-100 d-xl-none"></div>
+                    <div class="col-9 col-sm-5 col-md-4 col-lg-3 col-xl-3 px-xl-4 mx-auto mx-xl-0 mr-xl-auto">
+                        <p class="text-muted text-center small">مامی دست سازه را در شبکه های اجتماعی دنبال کنید</p>
+                        <div class="d-flex mx-4 justify-content-between align-items-center">
+                            <a href="#" class="social-media telegram">
+                                <i class="fab fa-telegram-plane mx-auto"></i>
+                            </a>
+
+                            <a href="https://www.instagram.com/mamidastsazeh/" class="social-media instagram">
+                                <i class="fab fa-instagram mx-auto"></i>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

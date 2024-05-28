@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "حذف اکانت";
+    Layout = "_Layout";
+}
+
+<div class="container pr-1">
+
+
+    <div class="row no-gutters">
+        <aside class=" col-3 d-md-flex align-items-stretch mt-5">
+            <partial name="_PanelMenu" />
+        </aside>
+        <main class="col-9 mt-5 pr-2">
+
+            <h1 class="panel-action-title">@ViewBag.Title</h1>
+            <p class="text-danger">از حذف حساب کاربری خود اطمینان دارید؟ کلیه آموزش های ارسالی شما با این کار از سایت حذف خواهد شد</p>
+
+            <form asp-action="SuspendMyUser" method="post">
+
+                <div class="form-group">
+                    <input type="checkbox" id="checkBoxID" name="check">از حذف حساب خود اطمینان دارم
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-danger" id="buttonID" disabled>
+                        بله، حذف
+                    </button>
+
+                    <a class="btn btn-secondary" asp-action="Index" asp-area="" asp-controller="Home">
+                        خیر
+                    </a>
+
+                </div>
+
+            </form>
+
+
+        </main>
+    </div>
+</div>
+@section ViewScript  {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/lib/jquery-ajax-unobtrusive/dist/jquery.unobtrusive-ajax.min.js"></script>
+}
+
+
+
+<script>
+    $("#checkBoxID").click(function () {
+        $("#buttonID").attr("disabled", !this.checked);
+    });
+</script>

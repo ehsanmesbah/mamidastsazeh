@@ -1,0 +1,13 @@
+﻿@model Post
+
+<div class="d-flex align-items-center video-channel-profile">
+    <span class="channel-profile">
+       
+            @if (Model.User != null)
+            {
+                <span class="channel-title">ایجاد شده توسط: @Model.User.NickName</span>
+            }
+      
+    </span>
+   
+</div>

@@ -1,0 +1,91 @@
+﻿@model IEnumerable<PostComment>
+@inject IHashId HashId
+@inject Microsoft.AspNetCore.Identity.UserManager<User> _userManager
+
+    @foreach (var comment in Model)
+    {
+            <div class="container-fluid border mt-1 mb-2 mr-1 ml-1 comment" style="background-color:white;box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15); border-radius: 6px;">
+                <div class="pb-2 comment-item-header">
+                    <div class="userInfo pt-1 w-100 d-flex justify-content-between">
+                        <div>
+                            <div class="userInfo--avatar">
+                                <a href="" class="avatar">
+                                    <img style="width:100%" src=@("/ProfileImages/" + (string.IsNullOrEmpty(comment.User.ProfileImage) ? "default.gif" : comment.User.ProfileImage)) alt="Profile-Image" />
+                                </a>
+                            </div>
+                            <div class="more">
+                                <a class="text-decoration-none name" asp-area="" asp-controller="UserPosts" asp-action="Index" asp-route-nickName="@comment.User.NickName" asp-route-page="1" asp-route-pageType="UserPosts" asp-route-sortorder="Created-desc">  @comment.User.NickName</a>
+
+                                <a class="readTime">@comment.CommentDate.ToPersianInterval()</a>
+                            </div>
+                        </div>
+                        <div class="more ">
+                            <button class="reportCommentBtn border-0 bg-transparent" onclick="reportComment(this)" style="font-size:smaller;color:gray;">گزارش تخلف</button>
+                            <div class="ReportDiv d-none w-100">
+
+                                <input class="reportText" maxlength="100" placeholder="خلاصه تخلف را وارد کنید" />
+                                <button data-id=@comment.Id class="btn-red pr-1 pl-1 ml-1" onclick="sendReportComment(this)" style="font-size:smaller;">ارسال</button>
+                                <button class="btn-red pr-1 pl-1" onclick="closeReportComment(this)" style="font-size:smaller">انصراف</button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                   
+                </div>
+                
+                <div class="row w-100 pr-3 commentText" style=" white-space: normal;">
+                        @comment.Text
+                   
+                </div>
+                <div class="row w-100 pb-2 pr-1" >
+                    @if (Context.User != null && (Context.User.IsInRole("MamiAdministrator") || Context.User.IsInRole("Users") || Context.User.IsInRole("PageOwner")))
+                    {
+                        var user = await _userManager.GetUserAsync(Context.User);
+                    <div class="fa-stack w-100" style="color:red;" >
+                        @if (@comment.CommentLikes.Where(cl => cl.User == user).Count() == 1)
+                        {
+                            
+                            <i data-type="Post" data-id=@comment.Id onclick="likeCommentFunction(this)" class="fas fa-heart" style="color:gray"></i>
+                            <span class="NumberOfCommentLikes">
+                                @comment.NumberOfLikes
+                            </span>
+
+                        }
+                        else
+                        {
+
+                            <i data-type="Post" data-id=@comment.Id onclick="likeCommentFunction(this)" class="far fa-heart" style="color:gray"></i>
+                            <span class="NumberOfCommentLikes">
+                                @comment.CommentLikes.Count()
+                            </span>
+
+                        }
+                        @if (comment.User == user || Context.User.IsInRole("MamiAdministrator"))
+                        {
+                           
+                                <i class="far fa-trash-alt mr-1" onclick="askDelete(this)" data-id=@comment.Id></i>
+                                <div class="rounded-pill justify-content-center askForDelete d-none pt-3 pb-3 w-auto align-content-center" style="font-size: small;background-color:lightgray">
+                                    <span>حذف شود؟</span>
+                                    <button class="btn btn-red pr-2 pl-2 ml-1" onclick="deleteComment(this)" data-id=@comment.Id style="font-size: small;">بله</button>
+                                    <button class="btn btn-red pr-2 pl-2" onclick="closeDeleteSpan(this)" style="font-size: small;">خیر</button>
+                                </div>
+                        }
+                    </div>
+                      }
+                     else
+                        {
+                            <span class="fa-stack w-100" style="color:red">
+                                <i data-type="Post" class="far fa-heart" style="color:gray"></i>
+                                <span class="NumberOfCommentLikes">
+                                    @comment.CommentLikes.Count()
+                                </span>
+
+                            </span>
+                        }
+                </div>
+            </div>
+
+    }
+

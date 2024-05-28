@@ -1,0 +1,64 @@
+﻿@model UserEditViewModel
+
+@{
+    ViewBag.Title = "ویرایش کاربر";
+    Layout = "_Layout";
+}
+
+<h5 class="panel-action-title">ویرایش کاربر</h5>
+
+<p class="text-success">
+    @TempData["SuccessMessage"]
+</p>
+
+<div class="text-danger" asp-validation-summary="ModelOnly"></div>
+<form asp-action="EditUser" method="post">
+    <input type="hidden" name="page" value="@ViewBag.Page" />
+    <input type="hidden" name="limit" value="@ViewBag.Limit" />
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <label asp-for="FullName"></label>
+        <span asp-validation-for="FullName" class="validation-error-message"></span>
+        <input asp-for="FullName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="NickName"></label>
+        <span asp-validation-for="NickName" class="validation-error-message"></span>
+        <input asp-for="NickName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="UserName"></label>
+        <span asp-validation-for="UserName" class="validation-error-message"></span>
+        <input asp-for="UserName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <span asp-validation-for="Email" class="validation-error-message"></span>
+        <input asp-for="Email" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Password"></label>
+        <span asp-validation-for="Password" class="validation-error-message"></span>
+        <input asp-for="Password" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="ConfirmPassword"></label>
+        <span asp-validation-for="ConfirmPassword" class="validation-error-message"></span>
+        <input asp-for="ConfirmPassword" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="userRoles">نقش ها</label>
+        <div id="userRoles">
+            <vc:roles user="Model.User"></vc:roles>
+        </div>
+    </div>
+    <div class="form-group mt-3">
+        <button type="submit" class="btn btn-primary">
+            ذخیره مشخصات
+        </button>
+        <a class="btn btn-secondary" asp-action="Users" asp-controller="Admin"
+           asp-route-page="@ViewBag.Page" asp-route-limit="@ViewBag.Limit">
+            بازگشت
+        </a>
+    </div>
+</form>

@@ -1,0 +1,126 @@
+﻿@model PostApproveViewModel
+@{
+    ViewBag.Title = "تایید آموزش";
+    Layout = "_Layout";
+}
+
+
+<h5 class="panel-action-title mt-2">تایید آموزش</h5>
+
+<div class="container pr-1">
+    <div class="row no-gutters">
+        <aside class=" col-3 d-md-flex align-items-stretch mt-2">
+            <partial name="_PanelMenu" />
+        </aside>
+        <main class="col-9 mt-5 pr-2">
+
+
+            <div id="submitVideo" class="p-2 pt-3">
+                <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                <form asp-action="ApprovePost" method="post">
+                    <div class="form-group UploadedPhotos">
+
+                        <ul class="ul-uploadimages">
+                            @{
+                                var i = 0;
+                                foreach (var item in Model.videoGuid)
+                                {
+                                    var index = "theImg" + i.ToString();
+                                    if (item.Contains("photo"))
+                                    {
+                                        <li id="li_11" class="li_question"><input type="hidden" name="videoGuid" class="videoGuid" value="@item" /><img class="uploaded-img  pl-1 pb-2" id="@index" src="/@item" /> <a onclick="up(this)" style="cursor:pointer;"><i class="fas fa-angle-double-up pr-3" style="color:green;"></i></a><a onclick="down(this)" style="cursor:pointer;"><i class="pr-2 fas fa-angle-double-down " style="color:red;"></i></a></li>
+                                    }
+                                    else
+                                    {
+                                        <li id="li_11" class="li_question"><input type="hidden" name="videoGuid" class="videoGuid" value="@item" /><img class="uploaded-img  pl-1 pb-2" id="@index" src="~/images/videothumbnail.jpg" /> <a onclick="up(this)" style="cursor:pointer;"><i class="fas fa-angle-double-up pr-3" style="color:green;"></i></a><a onclick="down(this)" style="cursor:pointer;"><i class="pr-2 fas fa-angle-double-down " style="color:red;"></i></a></li>
+                                    }
+
+                                    i++;
+
+                                }
+                            }
+                        </ul>
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden" name="movies[]" value="1">
+
+                        <input type="button" id="removephotos" class="form-control" value="حذف تصاویر" />
+                    </div>
+                    <input type="hidden" asp-for="@Model.post.ID" />
+                    <div class="form-group">
+                        <label asp-for="post.Title"></label>
+                        <span asp-validation-for="post.Title" class="validation-error-message"></span>
+                        <input asp-for="post.Title" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="post.Description"></label>
+                        <span asp-validation-for="post.Description" class="validation-error-message"></span>
+                        <textarea asp-for="post.Description" class="form-control"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="post.Category"></label>
+                        <span asp-validation-for="post.Category" class="validation-error-message"></span>
+                        <select class="form-control p-0" asp-for="post.Category.Id"
+                                asp-items="@new SelectList(Model.Categories, nameof(Category.Id), nameof(Category.Name),Model.post.Category)">
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="post.Price"></label>
+                        <span asp-validation-for="post.Price" class="validation-error-message"></span>
+                        <input asp-for="post.Price" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="post.DiscountPrice"></label>
+                        <span asp-validation-for="post.DiscountPrice" class="validation-error-message"></span>
+                        <input asp-for="post.DiscountPrice" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="post.SendType"></label>
+                        <span asp-validation-for="post.SendType" class="validation-error-message"></span>
+                        <input asp-for="post.SendType" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="post.RawPostTags"></label>
+                        <span asp-validation-for="post.RawPostTags" class="validation-error-message"></span>
+                        <textarea asp-for="post.RawPostTags" class="form-control"></textarea>
+                    </div>
+                    <button id="submitVideoConfirm" type="submit" class="btn btn-primary">
+                        انتشار
+                    </button>
+                </form>
+            </div>
+
+        </main>
+    </div>
+</div>
+<script type="text/javascript">
+    tinymce.init({
+        selector: '#post_Description', plugins: 'link paste', directionality: "rtl", paste_as_text: true
+    });
+</script>
+
+<script type="text/javascript">
+
+    function up(obj) {
+
+        $(obj).parent().insertBefore($(obj).parent().prev());
+
+    }
+    function down(obj) {
+        $(obj).parent().insertAfter($(obj).parent().next());
+
+    }
+</script>
+@section ViewStylesheet {
+    <link rel="stylesheet" href="~/css/UploadVideo.css" />
+}
+
+@section ViewScript {
+    <script src="~/lib/tinymce/tinymce.min.js"></script>
+    <script src="~/lib/dropzone/dist/dropzone.js"></script>
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/lib/jquery-form/dist/jquery.form.min.js"></script>
+    <script src="~/js/UploadPost.min.js"></script>
+}

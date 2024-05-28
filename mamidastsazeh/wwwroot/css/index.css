@@ -1,0 +1,8 @@
+﻿.Category-productcount {
+    position: absolute;
+    bottom: 4%;
+    left: 4%;
+    padding-left: .3rem;
+    color: #bb0000;
+    font-size: .8rem;
+}

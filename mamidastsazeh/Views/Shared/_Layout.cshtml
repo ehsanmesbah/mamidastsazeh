@@ -1,0 +1,298 @@
+﻿@inject IHashId HashId;
+
+<!DOCTYPE html>
+
+<html lang="fa">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-178741593-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-178741593-1');
+    </script>
+
+
+    <link rel="apple-touch-icon" href="/images/pwa192.png">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    @*@if (ViewBag.Type == "Index")
+        {
+            <meta name="description"
+                  content="، mamidastsazeh ، مامی دست سازه ، مر جع آموزش هنری دست سازه ساز جهت بانوان مادران رنگ آمیزی دکوپاژ دانلود دکوری تزئینات کاردستی عید دانلود تم تولد" />
+            <meta name="og:description"
+                  content="، mamidastsazeh ، مامی دست سازه ، مر جع آموزش هنری دست سازه ساز جهت بانوان مادران رنگ آمیزی دکوپاژ دانلود دکوری تزئینات کاردستی عید دانلود تم تولد" />
+            <meta name="keywords"
+                  content="رنگ , آموزش دست سازه, آموزش کاردستی , دکوپاژ,  دانلود تم تولد,  ساخت , بازسازی ,  ایده های کسب و کار خانگی,  هنری,  ایرانی, mamidastsaz, مامی دستساز ,  mamidastsazeh, اینستاگرام ,  مادرانه ,  بانوان, سیمه آقاجانی , رقیه آقاجانی" />
+            <title>مامی دستسازه|آموزش هنرهای خانگی مادر و کودک</title>
+        }*@
+    @*else if (ViewData["title"] == null || ViewData["title"].ToString() == "")
+        {
+
+
+        }*@
+    
+    <meta property="og:description" content="@ViewBag.Description">
+    <meta property="description" content="@ViewBag.Description">
+    <title>@ViewBag.Title</title>
+    <meta property="og:title" content="@ViewBag.Title">
+    <meta property="og:url" content="@ViewBag.URL">
+    <meta property="og:site_name" content="مامی دست سازه">
+    @if (ViewBag.OgImage == null || ViewBag.OgImage == "")
+    {
+        <meta property="og:image:secure_url" content="https://mamidastsazeh.com/images/loggo-mamidastsazeh.jpg">
+    }
+    else
+    {
+        <meta property="og:image:secure_url" content="@ViewBag.OgImage">
+    }
+    <meta property="og:locale" content="fa_IR">
+    @if (ViewBag.Type == "Post")
+    {
+
+        <meta property="og:type" content="article">
+
+
+    }
+  
+
+
+
+    <link rel="stylesheet" href="~/lib/fonts/Yekan.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/fontawesome/css/all.min.css" />
+
+    <link rel="stylesheet" href="~/css/Layout.min.css" />
+    <link rel="stylesheet" href="~/css/PostSlider.min.css" />
+    <link rel="stylesheet" href="~/css/Auth.min.css" />
+
+
+    <link rel="stylesheet" href="~/css/Post.min.css" />
+    <link rel="shortcut icon" href="~/images/favicon.ico">
+    <link rel="icon" type="image/gif" href="~/images/animated_favicon1.gif">
+
+    <link rel="stylesheet" href="~/lib/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="~/css/ProfileDropDown.min.css">
+    <link rel="stylesheet" href="~/lib/m-custom-scrollbar/css/jquery.mCustomScrollbar.min.css" />
+    <link href="~/css/SmartMenu/jquery.smartmenus.bootstrap-4.css" rel="stylesheet">
+
+    <link href="~/css/SmartMenu/sm-core-css.css" rel="stylesheet" />
+    @RenderSection("ViewStyleSheet", required: false)
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/swiper/swiper-bundle.min.js"></script>
+    <script src="~/lib/propperjs/dist/umd/popper.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/js/jquery.mousewheel.min.js"></script>
+    <script async src="~/lib/m-custom-scrollbar/js/jquery.mCustomScrollbar.min.js"></script>
+    <script type="text/javascript" src="~/js/jquery.smartmenus.js"></script>
+    <script type="text/javascript" src="~/js/jquery.smartmenus.bootstrap-4.js"></script>
+
+    @RenderSection("ViewScript", required: false)
+
+
+
+
+</head>
+<body>
+    <header class="layout-header">
+        @{
+            var youtubelink = "https://youtube.com/@SomayehAghajani?sub_confirmation=1";
+
+        }
+
+        <nav class="navbar  navbar-light bg-light  navbar-expand-md py-0 pt-1 pb-0  " style="position:relative;">
+            <div class="container d-flex  justify-content-between px-1 px-md-2 px-lg-5 py-1 ">
+                <div class="navbar-toggler w-25 border-0">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+
+                    </button>
+
+                </div>
+                @if (Context.User.Identity.IsAuthenticated)
+                {
+                    <div class="d-block d-md-none">
+
+                        <a class="btn pr-1 pl-1 " asp-action="ManageMyPosts" asp-controller="Panel" asp-area="Membership" style="color:blue;">
+                            <span>
+                                <i class="fas fa-mail-bulk"></i>
+                                <span class="upload-video-text pl-2 pr-2">صفحه من</span>
+                            </span>
+                        </a>
+                    </div>
+                }
+                <div class="d-flex" justify-content-start align-items-center">
+                    <a href="https://mamidastsazeh.com" class="logo">
+
+                        <img src="~/images/loggo-mamidastsazeh.jpg" alt="مامی دست سازه" class="rounded-pill" />
+                    </a>
+                </div>
+
+                <div class="search-container d-none d-md-block  position-relative">
+                    <div class="search d-none d-md-flex">
+                        <input type="text" class="form-control" placeholder="جستجوی آموزش ها  ..." />
+                        <a href="#" class="search-submit pl-4">
+                            <i class="fas fa-search"></i>
+                        </a>
+                    </div>
+                    <div class="search-suggest" style="z-index:1100;"></div>
+                    <div class="search-overlay" style="z-index:1099;"></div>
+                </div>
+
+                <vc:profile-drop-down></vc:profile-drop-down>
+            </div>
+
+        </nav>
+        <nav class="navigation navbar-collapse sm-rtl pb-2 navbar-light bg-light  collapse   justify-content-between  d-md-block navbar-expand-md" style="z-index:1000;" id="navbarNavDropdown">
+            <div class="container">
+                <ul class="nav navbar-nav">
+                    <li class="nav-item">
+
+                        <a class="nav-link" href="~/">
+
+                            <span>صفحه اول</span>
+                        </a>
+                    </li>
+                    <vc:main-categories list-type="All" strid=0></vc:main-categories>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-action="Index" asp-controller="mainCategory" asp-route-hashId=@HashId.Encode(6) asp-route-maincategoryName='دانلود-رایگان'> <span>دانلود رایگان</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://castbox.fm/vc/4486401"> <span>پادکست مامی</span></a>
+                    </li>
+                    @if (Context.User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item">
+
+                            <a class="nav-link" asp-area="Membership" asp-controller="Panel" asp-action="ManageMyPosts">
+
+                                <span>صفحه من</span>
+                            </a>
+                        </li>
+
+                    }
+
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-action="Index" asp-controller="SearchPage">
+
+                            <span>جستجوی پیشرفته</span>
+                        </a>
+                    </li>
+
+
+
+
+
+                </ul>
+            </div>
+
+        </nav>
+
+
+
+
+
+
+
+
+
+    </header>
+    <main>
+        @RenderBody()
+    </main>
+    <div class="di-socialbtn">
+        <a href="https://www.instagram.com/mamidastsazeh" data-toggle="tooltip" data-placement="top" title="" data-original-title="اینستاگرام مامی دست سازه">
+            <span class="fab fa-instagram" aria-hidden="true"></span>
+        </a>
+
+    </div>
+    <div class="di-socialbtn2">
+        
+        <a href=@youtubelink data-toggle="tooltip" data-placement="top" title="" data-original-title="یوتوب مامی دست سازه" class="mt-1">
+            <span class="fab fa-youtube" aria-hidden="true"></span>
+        </a>
+    </div>
+
+    <footer style="background-color:#fedeDe" class="mt-2">
+
+        <div class="container-fluid ">
+            <div class="container">
+                <div class="row py-3">
+                    <div class="col-12 col-md-4  mb-2 mb-md-0">
+                        <div class="container">
+
+                            <div class="row mb-2 mb-md-4">
+                                <div class="col p-0">
+                                    <p class="text-muted small text-justify">در مامی دست سازه شما قادر خواهید بود آموزش های هنری و ساده و کاربردی خود را با سایر هنرمندان ایرانی به اشتراک بگذارید و با ساخت دست سازه های زیبای هنری از هزینه ها کم کرده و حتی کسب درآمد کنید. </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col p-0">
+                                    <a class="btn btn-pink btn-sm w-100" asp-action="verifymobile" asp-controller="account" asp-area="membership" style="background-color:#fedeDe;">
+                                        <span>
+                                            <i class="fas fa-user-plus"></i>
+                                            <span class="btn-pink-text">عضو شبکه هنرمندان مامی دستسازه شوید </span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4 mb-2 mb-md-0">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col p-0 extra-links">
+                                    <h5>دیگر صفحات مامی دست سازه</h5>
+                                    <ul class="list-unstyled">
+                                        <li><a asp-action="aboutus" asp-controller="Home" asp-area="">درباره ما</a></li>
+                                        <li><a asp-action="aboutme" asp-controller="Home" asp-area="">درباره من</a></li>
+                                        <li><a asp-action="login" asp-controller="account" asp-area="membership">به ما پیوندید</a></li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4 col-lg-3 col-xl-3 px-xl-4 mx-auto mx-xl-0 mr-xl-auto">
+                        <p class="text-muted text-center small">مامی دست سازه را در شبکه های اجتماعی دنبال کنید</p>
+                        <div class="d-flex mx-4 justify-content-between align-items-center">
+
+
+                            <a href="https://www.instagram.com/mamidastsazeh/" class="social-media instagram fa-3x">
+                                <i class="fab fa-instagram-square fa-3x"></i>
+                            </a>
+                           
+                            <a href=@youtubelink class="social-media fa-youtube-play fa-3x">
+                                <i class="fab fa-youtube fa-3x"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid footer-bottom">
+
+            <div class="container px-0 py-2">
+                <div class="row no-gutters">
+                    <div class="col-12 offset-xl-4 mx-auto mx-xl-0 ml-xl-auto">
+                        <p class="text-muted small text-center text-xl-right copyright"></p>
+                    </div>
+                    <div class="w-100 d-xl-none"></div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- if (Context.User.IsInRole("MamiAdministrator"))
+     {
+         <mini-profiler />
+     }-->
+    <!-- <script>'serviceWorker' in navigator && navigator.serviceWorker.register('/serviceworker')</script>-->
+</body>
+</html>
+

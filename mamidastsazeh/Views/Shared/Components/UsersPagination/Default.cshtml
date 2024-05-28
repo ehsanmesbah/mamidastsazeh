@@ -1,0 +1,103 @@
+﻿@model UsersPaginationViewModel
+
+@{
+    Layout = null;
+}
+
+<div class="d-flex justify-content-center">
+    <table class="table table-striped table-bordered text-center">
+        <thead>
+            <tr>
+               
+                <th>نام</th>
+                <th>نام کاربری</th>
+                <th>آدرس ایمیل</th>
+                <th>اینستا</th>
+                <th>نام مستعار</th>
+                <th>ثبتنام</th>
+                <th>آخرین لاگین</th>
+                <th>فعال</th>
+                <td>عملیات</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model.Users)
+            {
+                var insta = "";
+                @if(!string.IsNullOrEmpty(user.InstaAddress)){
+                    insta = "https://instagram.com/" + user.InstaAddress.Replace("@", "").Replace(" ", "");
+                }
+                <tr>
+
+
+                    <td>@user.FullName</td>
+                    <td>@user.UserName</td>
+                    <td>@user.Email</td>
+                    <td>
+                        @if (!string.IsNullOrEmpty(user.InstaAddress)) {
+                            <a href=@insta>اینستا</a>
+                        }
+                    </td>
+                    <td>@user.NickName</td>
+                    <td>@user.CreatedDate</td>
+                    <td>@user.LastLogin</td>
+                    <td>@user.IsActive</td>
+
+
+                    <td>
+                        <a class="btn btn-primary btn-sm" title="ویرایش کاربر"
+                           asp-action="EditUser" asp-controller="Admin" 
+                           asp-area="Membership"
+                           asp-route-userId="@user.Id" 
+                           asp-route-page="@Model.Page" 
+                           asp-route-limit="@Model.Limit">
+                            <i class="fas fa-pen"></i>
+                        </a>
+                        <a class="btn btn-danger btn-sm text-white" title="حذف کاربر"
+                           asp-action="DeleteUser" asp-controller="Admin"
+                           asp-area="Membership"
+                           asp-route-userId="@user.Id"
+                           asp-route-page="@Model.Page" 
+                           asp-route-limit="@Model.Limit">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<nav class="d-flex justify-content-center align-items-center" aria-label="Page navigation users">
+    <ul class="pagination">
+        @foreach (var button in Model.Buttons)
+            {
+                var extraClasses = "";
+                @if (button.IsActive)
+            {
+                    extraClasses += "active ";
+                }
+                @if (button.Disabled)
+            {
+                    extraClasses += "disabled";
+                }
+            <li class="page-item @extraClasses">
+                <a class="page-link"
+                   asp-action="Users" asp-controller="Admin" asp-area="Membership"
+                   asp-route-page="@button.Page" asp-route-limit="@Model.Limit">
+                    @if (button.Label == "Previous")
+            {
+                        @:قبل
+                    }
+                    else if (button.Label == "Next")
+                    {
+                        @:بعد
+                    }
+                    else
+                    {
+                        @button.Label
+                    }
+                </a>
+            </li>
+        }
+    </ul>
+</nav>

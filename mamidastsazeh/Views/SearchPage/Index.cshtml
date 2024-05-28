@@ -1,0 +1,47 @@
+﻿@model PostsPaginationViewModel
+
+@{
+    Layout = "_Layout";
+   
+
+}
+
+<div class="container-fluid home-page">
+    <div class="row">
+
+        <div class="d-none col-lg-2"></div>
+        <div class="searchpage-container position-relative col-12 col-lg-8">
+            <div class="searchpage w-100">
+                <form asp-action="Search" asp-controller="SearchPage" asp-route-page="1" style="width:100%">
+                    <input type="text" class="form-control mb-2 mt-3" placeholder="جستجوی آموزش ها  ..." asp-for="SearchTerm" />
+                    <input type="hidden" asp-for="PageType" value="search" />
+                    <input type="hidden" asp-for="Limit" value=12 />
+
+
+
+                    <button type="submit" class="btn btn-pink mb-2">جستجو</button>
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+  </div>
+
+
+@section ViewStyleSheet  {
+    <link rel="stylesheet" href="~/css/Image1.min.css" />
+    <link rel="stylesheet" href="~/css/SearchPage.min.css" />
+    <link href="~/css/extra.min.css" rel="stylesheet" />
+
+}
+@section ViewScript{
+
+    <script src="~/js/JavaScript.min.js"></script>
+    <script>
+        $(function () {
+            $("input.input-validation-error").addClass("is-inValid");
+        })
+    </script>
+}

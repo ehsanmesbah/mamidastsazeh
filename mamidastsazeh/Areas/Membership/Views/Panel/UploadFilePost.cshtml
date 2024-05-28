@@ -1,0 +1,114 @@
+﻿@model PostFileSubmitViewModel
+@{
+    ViewBag.Title = "ارسال آموزش";
+    Layout = "_Layout";
+}
+
+
+<h5 class="panel-action-title">ارسال آموزش</h5>
+
+<div class="container pr-1">
+    <div class="row no-gutters">
+        <aside class=" col-3 d-md-flex align-items-stretch mt-5">
+            <partial name="_PanelMenu" />
+        </aside>
+        <main class="col-9 mt-5 pr-2">
+
+            <form class="box" method="post" asp-action="UploadingFile" enctype="multipart/form-data">
+                <div class="box__input">
+                    <svg class="box__icon" xmlns="http://www.w3.org/2000/svg" width="50" height="43" viewBox="0 0 50 43">
+                        <path d="M48.4 26.5c-.9 0-1.7.7-1.7 1.7v11.6h-43.3v-11.6c0-.9-.7-1.7-1.7-1.7s-1.7.7-1.7 1.7v13.2c0 .9.7 1.7 1.7 1.7h46.7c.9 0 1.7-.7 1.7-1.7v-13.2c0-1-.7-1.7-1.7-1.7zm-24.5 6.1c.3.3.8.5 1.2.5.4 0 .9-.2 1.2-.5l10-11.6c.7-.7.7-1.7 0-2.4s-1.7-.7-2.4 0l-7.1 8.3v-25.3c0-.9-.7-1.7-1.7-1.7s-1.7.7-1.7 1.7v25.3l-7.1-8.3c-.7-.7-1.7-.7-2.4 0s-.7 1.7 0 2.4l10 11.6z"></path>
+                    </svg>
+                    <input type="file" name="videoFile" id="file" class="box__file" accept="video/*,application/pdf">
+                    <label for="file">
+                        <strong>فایلی را انتخاب کنید</strong>
+                        <span class="box__dragndrop">یا آن را اینجا بکشید</span>
+                    </label>
+                </div>
+                <div class="box__status"><span></span></div>
+                <div class="box__uploading progress">
+                    <div class="box__bar progress-bar" role="progressbar"
+                         aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <div class="box__success text-success text-center">
+                    با موفقیت آپلود شد
+                    <!--<a href="#" class="box__restart" role="button">Upload more?</a>-->
+                </div>
+                <div class="box__error text-danger text-center">
+                    <span></span>
+                    <a href="#" class="box__restart btn btn-secondary" role="button">
+                        تلاش مجدد
+                    </a>
+                </div>
+            </form>
+
+           
+        <!--
+        <div class="p-2 pt-3 d-flex justify-content-center">
+            <button type="button" class="box__submit btn btn-lg btn-success">
+                شروع آپلود
+            </button>
+        </div>
+        -->
+        <div id="submitVideo" class="p-2 pt-3">
+            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+            <form asp-action="UploadFilePost" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+
+                    <ul class="ul-uploadimages">
+                    </ul>
+                </div>
+                <div class="form-group">
+                    <input type="hidden" id="videoGuid" asp-for="videoGuid" value="" />
+
+
+                </div>
+                <div class="form-group">
+                    <label asp-for="Thumbnail"></label>
+                    <span asp-validation-for="Thumbnail" class="validation-error-message"></span>
+                    <input type="file" asp-for="Thumbnail" class="form-control" accept="image/*" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Title"></label>
+                    <span asp-validation-for="Title" class="validation-error-message"></span>
+                    <input asp-for="Title" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description"></label>
+                    <span asp-validation-for="Description" class="validation-error-message"></span>
+                    <textarea asp-for="Description" class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Category"></label>
+                    <span asp-validation-for="Category" class="validation-error-message"></span>
+                    <select class="form-control p-0" asp-for="Category"
+                            asp-items="@new SelectList(Model.Categories, nameof(Category.Id), nameof(Category.Name),Model.Category)">
+                        <option value="" selected>یک دسته را انتخاب کنید ...</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="RawTags"></label>
+                    <span asp-validation-for="RawTags" class="validation-error-message"></span>
+                    <textarea asp-for="RawTags" class="form-control"></textarea>
+                </div>
+                <button id="submitVideoConfirm" type="submit" class="btn btn-primary">
+                    ذخیره و انتشار
+                </button>
+            </form>
+            </div>
+    
+        </main>
+    </div>
+</div>
+
+
+    @section ViewStylesheet {
+        <link rel="stylesheet" href="~/css/UploadVideo.min.css" />
+    }
+
+    @section ViewScript {
+        <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
+        <script src="~/lib/jquery-form/dist/jquery.form.min.js"></script>
+        <script src="~/js/UploadFile.min.js"></script>
+    }

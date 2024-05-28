@@ -1,0 +1,45 @@
+﻿@model FeaturedViewModel
+
+<div class="container-fluid featured">
+    <h2>ویژه های مامی دست سازه</h2>
+    <div class="row">
+        @foreach (var post in Model.TopPosts)
+        {
+        <div class="col-6 col-md-3 col-lg-2  mb-4">
+            @{
+                await Html.RenderPartialAsync("_PostCard", post);
+            }
+        </div>
+        }
+    </div>
+    <div class="row more-videos-trigger no-gutters">
+        <div class="col">
+            <button class="btn btn-link btn-more-videos px-0">
+                <span>
+                    <span>پست های بیشتر</span>
+                    <i class="fas fa-chevron-down"></i>
+                </span>
+            </button>
+        </div>
+    </div>
+    <div class="row more-videos d-none">
+        @foreach (var post in Model.MorePosts)
+        {
+        <div class="col-6 col-md-3  mb-4">
+            @{
+                await Html.RenderPartialAsync("_PostCard", post);
+            }
+        </div>
+        }
+    </div>
+    <div class="row less-videos-trigger no-gutters d-none">
+        <div class="col">
+            <button class="btn btn-link btn-less-videos px-0">
+                <span>
+                    <span>ویدیوهای کمتر</span>
+                    <i class="fas fa-chevron-up"></i>
+                </span>
+            </button>
+        </div>
+    </div>
+</div>

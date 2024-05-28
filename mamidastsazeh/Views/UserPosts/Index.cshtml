@@ -1,0 +1,47 @@
+﻿@model PostsPaginationViewModel
+@inject IHashId HashId
+@{
+    Layout = "_Layout";
+
+}
+
+
+<div class="container-fluid  home-page mt-3">
+    <div class="d-flex mb-2">
+        <div class="lighter-font ml-2">
+            <a class="text-decoration-none" asp-area="" asp-controller="UserPosts" asp-action="Index" asp-route-nickName="@Model.User.NickName" asp-route-page="1" asp-route-pageType="UserPosts" asp-route-sortorder="Created-desc">
+                <img class="profile-image-user-page" src=@("/ProfileImages/"+( string.IsNullOrEmpty(Model.User.ProfileImage)?"default.gif":Model.User.ProfileImage)) alt="Profile-Image" />
+            </a>
+        </div>
+        <div class="mb-2 flex-grow-1 text-decoration-none lighter-font">
+            <p class="mb-1">
+                <a class="text-decoration-none" asp-area="" asp-controller="UserPosts" asp-action="Index" asp-route-nickName="@Model.User.NickName" asp-route-page="1" asp-route-pageType="UserPosts" asp-route-sortorder="Created-desc"> @Model.User.NickName</a>
+            </p>
+            @if (!string.IsNullOrEmpty(Model.User.InstaAddress))
+            {
+                <p class="mb-1">
+                    <a class="text-decoration-none" href=@("https://instagram.com/" + Model.User.InstaAddress.Replace("@", ""))>صفحه اینستاگرام</a>
+                </p>
+            }
+           
+
+        </div>
+    </div>
+</div>
+<div class="container-fluid pt-1">
+    <vc:post-pagination input-model="Model"></vc:post-pagination>
+</div>
+
+
+@section ViewStyleSheet  {
+    <link rel="stylesheet" href="~/css/VideoPlayer.min.css" />
+    <link rel="stylesheet" href="~/css/VideoPlayer.min.css" />
+    <link rel="stylesheet" href="~/css/Image1.min.css" />
+    <link rel="stylesheet" href="~/css/ChannelPartials.min.css" />
+    <link href="~/css/extra.min.css" rel="stylesheet" />
+}
+@section ViewScript{
+    
+    <script src="~/js/JavaScript.min.js"></script>
+}
+

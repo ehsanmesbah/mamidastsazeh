@@ -1,0 +1,174 @@
+﻿@model PostSubmitViewModel
+@inject ICheckUserPermission CheckUserPermission
+@{
+    ViewBag.Title = "آپلود آموزش";
+    Layout = "_Layout";
+    string PostTypeString = "Training";
+    if (Model.PostType == 5) PostTypeString = "Product";
+}
+
+
+
+
+<div class="container-fluid homepage" style="position:relative">
+
+
+    <!--    <aside class=" col-3 d-md-flex align-items-stretch mt-2">
+        <partial name="_PanelMenu" />
+    </aside>
+    -->
+
+    @if (PostTypeString == "Training")
+    {
+        <div class="w-100 mt-3">
+
+            <a href="~/membership/panel/uploadpost/Product">
+                این صفحه صرفا جهت ارسال مطالب آموزشی می باشد. جهت شرکت در بازارچه اینجا را کلیک کنید.
+            </a>
+
+        </div>
+    }
+        <div class="container-fluid col-10 mt-2 pr-2 row">
+            @if (PostTypeString == "Training")
+            {
+               
+                <h5 class=" mt-1 w-100">ارسال آموزش</h5>
+                <p class="panel-action-title mt-2 w-100">حداکثر 7 عکس و  یک ویدیو 5 دقیقه ای 100 مگابایتی</p>
+            }
+            else if (PostTypeString == "Product")
+            {
+                <h5 class=" mt-2 w-100">افزودن محصول</h5>
+                <p class="panel-action-title mt-2 w-100">حداکثر 3 عکس(تصویر آخر کاور اصلی می باشد)</p>
+            }
+
+            <form id="uploadImages" class="dropzone w-100" asp-action="UploadingImages" method="post" enctype="multipart/form-data" style="font-size:1rem;">
+                <input type="file" class="dz-hidden-input" style="visibility: hidden;width:1px;font-size:1px;" hidden>
+            </form>
+        </div>
+
+
+        <div id="submitVideo" class="col-12 p-2 pt-3">
+            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+            <form asp-action="UploadPost" method="post">
+
+                <div class="form-group UploadedPhotos">
+
+                    <ul class="ul-uploadimages">
+                    </ul>
+                </div>
+                <div class="form-group">
+                    <input type="hidden" name="movies[]" value="1">
+
+                    <input type="button" id="removephotos" class="form-control" value="حذف تصاویر" />
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Title"></label>
+
+                    <span asp-validation-for="Title" class="validation-error-message"></span>
+                    <input asp-for="Title" class="form-control" />
+                </div>
+                <div class="form-group">
+                    @if (PostTypeString == "Training")
+                    {
+                        <label asp-for="Description"></label>
+                    }
+                    else if (PostTypeString == "Product")
+                    {
+                        <label>ویژگی های محصول (سایز، وزن، رنگ، جنس و . . .)</label>
+                    }
+
+
+                    <span asp-validation-for="Description" class="validation-error-message"></span>
+                    <textarea asp-for="Description" class="form-control"></textarea>
+                </div>
+                @if (PostTypeString == "Product")
+                {
+                    Model.Price = null;
+                    Model.DiscountPrice = null;
+                    <div class="form-group">
+
+                        <label asp-for="Price"></label>
+                        <span asp-validation-for="Price" class="validation-error-message"></span>
+                        <input asp-for="Price" class="form-control" />
+                    </div>
+                    <div class="form-group">
+
+                        <label asp-for="DiscountPrice"></label>
+                        <span asp-validation-for="DiscountPrice" class="validation-error-message"></span>
+                        <input asp-for="DiscountPrice" class="form-control" />
+                    </div>
+                    <div class="form-group">
+
+                        <label asp-for="SendType"></label>
+                        <span asp-validation-for="SendType" class="validation-error-message"></span>
+                        <input asp-for="SendType" class="form-control" />
+                    </div>
+                }
+                else
+                {
+                    <input type="hidden" asp-for="Price" />
+                    <input type="hidden" asp-for="DiscountPrice" />
+                    <input type="hidden" asp-for="SendType" />
+                }
+                <div class="form-group">
+                    <label asp-for="MainCategory"></label>
+                    <span asp-validation-for="MainCategory" class="validation-error-message"></span>
+                    <select class="form-control p-0" asp-for="MainCategory"
+                            asp-items="@new SelectList(Model.MainCategories, nameof(MainCategory.Id), nameof(MainCategory.maincategoryname), Model.MainCategory)">
+                        <option value="" selected>یک گروه اصلی را انتخاب کنید ...</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Category"></label>
+                    <span asp-validation-for="Category" class="validation-error-message"></span>
+                    <select class="form-control p-0" asp-for="Category" disabled
+                            asp-items="@new SelectList(Model.Categories, nameof(Category.Id), nameof(Category.Name), Model.Category)">
+                        <option value="" selected>یک دسته را انتخاب کنید ...</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="RawTags"></label>
+                    <span asp-validation-for="RawTags" class="validation-error-message"></span>
+                    <textarea asp-for="RawTags" class="form-control"></textarea>
+                </div>
+                <input type="hidden" asp-for="PostType" />
+                <button id="submitVideoConfirm" name="submitVideoConfirm" type="submit" class="btn btn-primary">
+                    ارسال
+                </button>
+            </form>
+        </div>
+
+    </div>
+
+@if (CheckUserPermission.AllowedHtml(User.Identity.Name))
+{
+    <script type="text/javascript">
+        tinymce.init({
+            selector: '#Description', plugins: 'link paste image lists advlist fullscreen', directionality: "rtl", paste_as_text: true 
+         
+        });
+    </script>
+}
+@section ViewStylesheet {
+    <link rel="stylesheet" href="~/css/UploadVideo.css" />
+    <link rel="stylesheet" href="~/lib/dropzone/dist/dropzone.css" />
+}
+
+@section ViewScript {
+    <script src="~/lib/tinymce/tinymce.min.js"></script>
+    <script src="~/lib/dropzone/dist/dropzone.js"></script>
+        @if (PostTypeString == "Training")
+        {
+            <script src="~/js/UploadPost.min.js"></script>
+        }
+        else
+        {
+            <script src="~/js/UploadPostProduct.min.js"></script>
+            
+         }
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/lib/jquery-form/dist/jquery.form.min.js"></script>
+
+}

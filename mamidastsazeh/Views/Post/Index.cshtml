@@ -1,0 +1,146 @@
+﻿@model Post
+@inject IHashId HashId
+@inject UserManager<User> userManager
+
+@{
+
+    string oc = "", commentMessage = "نظر بدهید!", isLiked = "", likeFunction = "";
+
+}
+
+<div class="container-fluid homepage" style="position:relative">
+    <div class="col-12 mt-3">
+        <vc:post-route post-id=@Model.ID></vc:post-route>
+    </div>
+    @if (Context.User != null && (Context.User.IsInRole("MamiAdministrator") || userManager.GetUserId(Context.User) == Model.User.Id))
+    {
+        <i class="far fa-edit mt-3 mr-3"
+           onclick="toggleEdit()"></i>
+    }
+    <div id="editDiv" class="col-12 mt-3">
+
+        @if (Context.User != null && (Context.User.IsInRole("MamiAdministrator") || userManager.GetUserId(Context.User) == Model.User.Id))
+        {
+            <div class="w-100 d-flex flex-row mb-2">
+                <form asp-action="Delete" asp-controller="Post" asp-route-id=@HashId.Encode(Model.ID) class="ml-2">
+
+
+                    <button type="submit" class="btn btn-pink ">حذف</button>
+                </form>
+
+                @if (Context.User.IsInRole("MamiAdministrator") && Model.Poststate != PostState.Approved)
+                {
+
+                    <form asp-action="Approve" asp-controller="Post" asp-route-id=@HashId.Encode(Model.ID)>
+                        <button type="submit" class="btn btn-pink ml-2">تایید</button>
+                    </form>
+
+
+                }
+            </div>
+        }
+        else
+        {
+            <form asp-action="index" asp-controller="Post" asp-route-id=@HashId.Encode(Model.ID) style="width:100%">
+            </form>
+        }
+        @if (Context.User != null && Context.User.IsInRole("MamiAdministrator"))
+        {
+            <lable class="ml-2">کد آموزش: @Model.ID.ToString()</lable>
+            <form class="mb-2" asp-action="SetTitle" asp-controller="Post" asp-route-id=@Model.ID>
+                <input id="id" name="id" type="hidden" value="@Model.ID" />
+                <input id="title" name="title" type="text" value="@Model.Title" />
+                <button type="submit" class="btn btn-pink ml-2">تغییر عنوان</button>
+            </form>
+            <form asp-action="SetAdminViewDelete" asp-controller="Post" asp-route-id=@Model.ID>
+                <input id="id" name="id" type="hidden" value="@Model.ID" />
+                <input id="adminView" name="adminView" type="text" value="@Model.AdminView" />
+                <button type="submit" class="btn btn-pink ml-2">ثبت نظر ادمین و حذف</button>
+            </form>
+            <a class="btn btn-danger" asp-area="Membership" asp-action="ApprovePost" asp-controller="Admin" asp-route-hashId=@HashId.Encode(Model.ID)>ویرایش</a>
+
+        }
+    </div>
+    <div class="row container-fluid m-0 p-0">
+        <div class="col-12 col-md-9">
+
+            <div class="w-100 mt-2">
+                <vc:video-player post-id=@Model.ID></vc:video-player>
+            </div>
+
+            <div class="w-100">
+
+                @if (Context.User != null)
+                {
+                    oc = "";
+                    isLiked = ViewBag.IsLiked;
+                    likeFunction = "likePostFunction(this)";
+                }
+                else
+                {
+                    likeFunction = "alert('ابتدا باید وارد شوید')";
+                    isLiked = "far fa-heart";
+                    string currentUrl = "/post/" + HashId.Encode(Model.ID) + "/-";
+                    oc = "callLogin('" + currentUrl + "')";
+                    commentMessage = "ابتدا باید وارد شود! برای ورود اینجا را کلید کنید";
+                }
+
+                <span class="fa-stack fa-lg w-100" style="color:gray;font-size:1rem;">
+                    <i data-type="Post" data-id=@HashId.Encode(Model.ID) onclick="@likeFunction" class="@isLiked" style="color:red"></i>
+                    <span class="NumberOfPostLikes">
+                        @Model.NumberOfLikes.ToString().ToPersianDigits()  نفر پسندیده است
+                    </span>
+                </span>
+
+
+
+                <form asp-action="SubmitComment" asp-controller="Post" asp-route-id=@HashId.Encode(Model.ID) style="width:100%" onclick="@oc">
+
+                    <textarea type="text" id="commentText" maxlength="150" name="commentText" class="form-control" placeholder="@commentMessage"></textarea>
+
+                    <button type="submit" class="btn btn-pink mb-2 mt-2" style="color:gray;">ارسال نظر</button>
+                </form>
+
+
+            </div>
+            <div class="w-100 pt-1">
+                <div class="container-fluid border pr-2 mb-3 pb-3" style="background-color:#f5f5f5;box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.15); border-radius: 6px;">
+                    <div class="row mr-4 mt-1">
+                        <i class="fas fa-comment section-icon pt-1 pl-2" style="color:gray"></i>
+                        <h5 class="related-videos-title">نظرات</h5>
+                    </div>
+                    <div class="CommentDiv">
+                        <div class="CommentsHolder">
+                            <vc:post-comments post-id="@HashId.Encode(Model.ID)" skip=0 limit=3></vc:post-comments>
+                        </div>
+                        <input type="hidden" name="postId" id="postId" value="@HashId.Encode(Model.ID)" />
+
+                        <button class="border-0 bg-transparent" style="color:gray;" data-limit=10 data-skip=3 data-postId="@HashId.Encode(Model.ID)" onclick="moreComments(this)">بیشتر</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-3">
+            <vc:related-posts post-id=@Model.ID></vc:related-posts>
+
+        </div>
+    </div>
+</div>
+
+
+
+@section ViewStyleSheet  {
+    <link rel="stylesheet" href="~/css/VideoPlayer.min.css" />
+    <link rel="stylesheet" href="~/css/Image1.min.css" />
+    <link rel="stylesheet" href="~/css/ChannelPartials.min.css" />
+    <link rel="stylesheet" href="~/css/PostComment.min.css" />
+    <link rel="stylesheet" href="~/css/ImageSwiper.min.css" />
+
+}
+@section ViewScript{
+    <script src="~/js/JavaScript.min.js"></script>
+    <script src="~/js/LikeComment.min.js"></script>
+    <script src="~/js/ImageSwiper.min.js"></script>
+
+}

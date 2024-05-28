@@ -1,0 +1,271 @@
+﻿@model PostsPaginationViewModel
+@inject IHashId HashId
+
+<div class="d-sm-block p-2  w-100">
+    <ul class="d-flex list-inline pr-0 mb-0 w-100 justify-content-center align-content-center">
+        <li class="list-inline-item  justify-content-center align-content-center">
+            <span>مرتب سازی بر اساس:</span>
+        </li>
+
+
+        @if (Model.PageType == "search")
+        {
+
+            <li class="list-inline-item  justify-content-center align-content-center">
+                <a class="btn pt-0 btn-sm btn-light  justify-content-center align-content-center"
+                   asp-action="Search"
+                   asp-area=""
+                   asp-controller="SearchPage"
+                   asp-route-Limit=@Model.Limit
+                   asp-route-Page=1
+                   asp-route-SortOrder="NumberOfViews-desc"
+                   asp-route-PageType="@Model.PageType"
+                   asp-route-searchTerm="@Model.SearchTerm">
+                    بیشترین بازدید
+                </a>
+            </li>
+            <li class="list-inline-item  justify-content-center align-content-center">
+                <a class="btn pt-0 btn-sm btn-light  justify-content-center align-content-center"
+                   asp-action="Search"
+                   asp-controller="SearchPage"
+                   asp-route-Limit=@Model.Limit
+                   asp-route-Page=1
+                   asp-area=""
+                   asp-route-SortOrder="Created-desc"
+                   asp-route-PageType="@Model.PageType"
+                   asp-route-searchTerm="@Model.SearchTerm">
+                    جدیدترین
+                </a>
+            </li>
+        }
+        else if (Model.PageType == "category")
+        {
+            <li class="list-inline-item  justify-content-center align-content-center">
+                <a class="btn pt-0 btn-sm btn-light  justify-content-center align-content-center"
+                   asp-action="Index"
+                   asp-controller="Category"
+                   asp-route-Page=1
+                   asp-area=""
+                   asp-route-SortOrder="NumberOfViews-desc"
+                   asp-route-PageType="@Model.PageType"
+                   asp-route-CategoryHashId="@Model.CategoryHashId"
+                   asp-route-CategoryName="@Model.CategoryName"
+                   asp-route-CategoryType="@Model.CategoryType">
+                    بیشترین بازدید
+                </a>
+            </li>
+            <li class="list-inline-item  justify-content-center align-content-center">
+                <a class="btn pt-0 btn-sm btn-light  justify-content-center align-content-center"
+                   asp-action="Index"
+                   asp-controller="Category"
+                   asp-route-Limit=@Model.Limit
+                   asp-route-Page=1
+                   asp-area=""
+                   asp-route-SortOrder="Created-desc"
+                   asp-route-PageType="@Model.PageType"
+                   asp-route-CategoryHashId="@Model.CategoryHashId"
+                   asp-route-CategoryName="@Model.CategoryName"
+                   asp-route-CategoryType="@Model.CategoryType">
+                    جدیدترین
+                </a>
+            </li>
+        }
+        else if (Model.PageType == "Userposts")
+        {
+            <li class="list-inline-item  justify-content-center align-content-center">
+                <a class="btn pt-0 btn-sm btn-light  justify-content-center align-content-center"
+                   asp-action="index"
+                   asp-controller="UserPosts"
+                   asp-area=""
+                   asp-route-page="1"
+                   asp-route-PageType="UserPosts"
+                   asp-route-nickname="@Model.NickName"
+                   asp-route-SortOrder="NumberOfViews-desc"
+                >
+                    بیشترین بازدید
+                </a>
+            </li>
+            <li class="list-inline-item  justify-content-center align-content-center">
+                <a class="btn pt-0 btn-sm btn-light  justify-content-center align-content-center"
+                 
+                   asp-route-SortOrder="Created-desc"
+                    asp-action="index"
+                   asp-controller="UserPosts"
+                   asp-area=""
+                   asp-route-page="1"
+                   asp-route-PageType="UserPosts"
+                   asp-route-nickname="@Model.NickName"
+                  >
+                    جدیدترین
+                </a>
+            </li>
+        }
+
+    </ul>
+</div>
+
+<div class="d-flex justify-content-center">
+
+    <div class="container-fluid thumbnail-container  overflow-hidden">
+        <div class="row ">
+            @foreach (var post in Model.Posts)
+            {
+                <div class="col-6 col-md-3 mb-3 ">
+                    <div class="post-card">
+                        @{
+                            await Html.RenderPartialAsync("_PostCard", post);
+                        }
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+<nav class="d-flex justify-content-center align-items-center" aria-label="Page navigation users">
+    <ul class="pagination">
+        @foreach (var button in Model.Buttons)
+        {
+            var extraClasses = "";
+
+            @if (button.IsActive)
+            {
+                extraClasses += "active ";
+            }
+            @if (button.Disabled)
+            {
+                extraClasses += "disabled";
+            }
+        <li class="page-item @extraClasses">
+
+            @if (Model.PageType == "search")
+            {
+
+                <a class="page-link"
+                   asp-action="Search"
+                   asp-area=""
+                   asp-controller="SearchPage"
+                   asp-route-Limit=@Model.Limit
+                   asp-route-Page=@button.Page
+                   asp-route-SortOrder="@Model.SortOrder"
+                   asp-route-PageType="@Model.PageType"
+                   asp-route-searchTerm="@Model.SearchTerm">
+                    @if (button.Label == "Previous")
+                    {
+                        @:قبل
+                    }
+                    else if (button.Label == "Next")
+                    {
+                        @:بعد
+                    }
+                    else
+                    {
+                        @button.Label
+                    }
+                </a>
+            }
+            else if (Model.PageType == "category")
+            {
+                <a class="page-link "
+                   asp-action="Index"
+                   asp-area=""
+                   asp-controller="Category"
+                   asp-route-page="@button.Page"
+                   asp-route-CategoryHashId="@Model.CategoryHashId"
+                   asp-route-CategoryName="@Model.CategoryName"
+                   asp-route-PageType="category"
+                   asp-route-SortOrder="@Model.SortOrder"
+                   asp-route-CategoryType="@Model.CategoryType">
+
+                    @if (button.Label == "Previous")
+                    {
+                        @:قبل
+                    }
+                    else if (button.Label == "Next")
+                    {
+                        @:بعد
+                    }
+                    else
+                    {
+                        @button.Label
+                    }
+                </a>
+            }
+            else if (Model.PageType == "manageposts")
+            {
+                <a class="page-link"
+                   asp-action="manageposts"
+                   asp-controller="admin"
+                   asp-area="membership"
+
+                   asp-route-page="@button.Page"
+                   asp-route-postState="new">
+                    @if (button.Label == "Previous")
+                    {
+                        @:قبل
+                    }
+                    else if (button.Label == "Next")
+                    {
+                        @:بعد
+                    }
+                    else
+                    {
+                        @button.Label
+                    }
+                </a>
+            }
+            else if (Model.PageType == "category")
+            {
+                <a class="page-link "
+                   asp-action="Index"
+                   asp-area=""
+                   asp-controller="Category"
+                   asp-route-page="@button.Page"
+                   asp-route-CategoryHashId="@Model.CategoryHashId"
+                   asp-route-CategoryName="@Model.CategoryName"
+                   asp-route-PageType="category"
+                   asp-route-SortOrder="@Model.SortOrder"
+                   >
+
+                    @if (button.Label == "Previous")
+                    {
+                        @:قبل
+                    }
+                    else if (button.Label == "Next")
+                    {
+                        @:بعد
+                    }
+                    else
+                    {
+                        @button.Label
+                    }
+                </a>
+            }
+            else if (Model.PageType == "UserPosts")
+            {
+                <a class="page-link"
+                   asp-action="index"
+                   asp-controller="UserPosts"
+                   asp-area=""
+                   asp-route-page="@button.Page"
+                   asp-route-PageType="UserPosts"
+                   asp-route-SortOrder="@Model.SortOrder"
+                   asp-route-nickname="@Model.NickName">
+                    @if (button.Label == "Previous")
+                    {
+                        @:قبل
+                    }
+                    else if (button.Label == "Next")
+                    {
+                        @:بعد
+                    }
+                    else
+                    {
+                        @button.Label
+                    }
+                </a>
+            }
+        </li>
+        }
+    </ul>
+</nav>

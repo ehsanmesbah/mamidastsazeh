@@ -1,0 +1,69 @@
+﻿@model string
+
+@{
+    Layout = null;
+}
+
+<div class="upload-video d-flex">
+    <a class="btn pr-1 pl-1 btn-outline-primary btn-pink" asp-action="UploadPost" asp-controller="Panel" asp-area="Membership" style="border-width:1px;border-color:hotpink;">
+        <span>
+            <i class="fas fa-cloud-upload-alt"></i>
+            <span class="upload-video-text">ارسال آموزش</span>
+        </span>
+    </a>
+    <a class="btn pr-1 pl-1 btn-outline-primary btn-pink mr-1 " href="~/membership/panel/uploadpost/Product" style="border-width:1px;border-color:hotpink;">
+        <span>
+            <i class="fas fa-shopping-basket"></i>
+            <span class="upload-video-text">شرکت در بازارچه</span>
+        </span>
+    </a>
+</div>
+<div class="position-relative">
+    <div class="dropdown">
+        <a class="profile-dropdown dropdown-toggle" data-display="static" href="#" role="button" id="profileDropDownButton"
+           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img  src="~/ProfileImages/@Model" alt="ProfileImage" style=" position: absolute; border-radius:50%; top: 0; bottom: 0;        left: 0;        right: 0;        margin: auto;width:100%;font-size:5px;" />
+            <span class="profile-image"></span>
+        </a>
+        <div class="profile-menu dropdown-menu shadow dropdown-menu-left " aria-labelledby="profileDropDownButton" style="z-index:2000">
+            <a is-active-route
+               class="dropdown-item" asp-action="Index" asp-controller="Panel" asp-area="Membership">
+                <span class="d-flex align-items-center">
+                    <i class="fas fa-mug-hot"></i>
+                    <span>میز کار</span>
+                </span>
+            </a>
+            <a is-active-route
+               class="dropdown-item" asp-action="UserSettings" asp-controller="Panel" asp-area="Membership">
+                <span class="d-flex align-items-center">
+                    <i class="fas fa-mug-hot"></i>
+                    <span>تنظیمات کاربر</span>
+                </span>
+            </a>
+            <a is-active-route
+               class="dropdown-item" asp-action="UploadPost" asp-controller="Panel" asp-area="Membership">
+                <span class="d-flex align-items-center">
+                    <i class="fas fa-upload"></i>
+                    <span>ارسال پست</span>
+                </span>
+            </a>
+            @if (Context.User.IsInRole("MamiAdministrator"))
+            {
+                <a is-active-route
+                   class="dropdown-item" asp-action="Users" asp-controller="Admin" asp-area="Membership">
+                    <span class="d-flex align-items-center">
+                        <i class="fas fa-users-cog"></i>
+                        <span>کاربران</span>
+                    </span>
+                </a>
+            }
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" asp-action="Logout" asp-controller="Account" asp-area="Membership">
+                <span class="d-flex align-items-center">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>خروج</span>
+                </span>
+            </a>
+        </div>
+    </div>
+</div>

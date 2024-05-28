@@ -1,0 +1,18 @@
+﻿@model PaginationViewModel
+
+@{
+    ViewBag.Title = "کاربران";
+    Layout = "_Layout";
+}
+
+<div class="container pr-1">
+    <div class="row no-gutters">
+        <aside class=" col-3 d-md-flex align-items-stretch mt-5">
+            <partial name="_PanelMenu" />
+        </aside>
+        <main class="col-9">
+
+            <vc:users-pagination page="Model.Page" limit="Model.Limit"></vc:users-pagination>
+            </main>
+        </div>
+</div>

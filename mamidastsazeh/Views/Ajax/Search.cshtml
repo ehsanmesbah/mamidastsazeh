@@ -1,0 +1,19 @@
+﻿@model IEnumerable<Post>
+
+@{
+    Layout = null;
+    ViewData["isSearch"] = true;
+}
+
+<div class="search-content">
+    <div class="search-result scrollable">
+        <div><a asp-action="Index" asp-controller="SearchPage" >جستجوی پیشرفته</a></div>
+        <div class="p-3">
+            @foreach (var post in Model)
+            {
+                <partial name="_PostCardSidebar" model=post />
+            }
+        </div>
+
+    </div>
+</div>

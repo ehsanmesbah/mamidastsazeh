@@ -1,0 +1,98 @@
+﻿
+@model IEnumerable<MainCategory>
+@inject IHashId HashId
+<!-- main cat-->
+<!-- Menu Level 2 -->
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#">
+        <span class="pr-2">
+            آموزش
+        </span></a>
+    <ul class="dropdown-menu">
+        @foreach (var item in Model)
+        {
+        <li class="dropdown">
+            <a class="dropdown-item dropdown-toggle" href="#"> <span class="pr-2">@item.maincategoryname</span></a>
+            <ul class="dropdown-menu">
+                <li class="dropdown-item">
+
+
+                    <a asp-area="" asp-action="Index" asp-controller="mainCategory" asp-route-hashId=@HashId.Encode(item.Id) asp-route-maincategoryName=@item.maincategoryname.Replace(' ','-') class="dropdown-item mydropdown-item">
+                        <span class="pr-2">
+                            همه پست های دسته
+                        </span>
+
+                    </a>
+
+                </li>
+                @foreach (var cat in item.Categories)
+                {
+                    @if (cat.Id == 139)
+                    {
+                        <li class="dropdown-item">
+                            <a asp-area="" asp-action="Index" asp-controller="CustomizedType" asp-route-hashId=1 asp-route-page=1 class="dropdown-item">
+                                <span class="pr-2">   ویدیو</span>
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="dropdown-item">
+                            <a asp-area="" asp-action="Index" asp-controller="category" asp-route-CategoryHashId=@HashId.Encode(cat.Id) asp-route-page=1 asp-route-pagetype="category" asp-route-SortOrder="Created-desc" asp-route-categoryType="Category" asp-route-categoryName="@cat.Name.Replace(" ","-")" class="dropdown-item">
+
+                                <span class="pr-2 pl-2">@cat.Name</span>
+                            </a>
+                        </li>
+                    }
+
+                }
+            </ul>
+            
+
+        </li>
+           
+            }
+
+        </ul>
+</li>
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#"> <span class="pr-2">بازارچه</span></a>
+    <ul class="dropdown-menu">
+        @foreach (var item in Model)
+        {
+            if (item.Id != 6 && item.Id != 8)
+            {
+                <li class="dropdown">
+                    <a class="dropdown-item dropdown-toggle" href="#"> <span class="pr-2">@item.maincategoryname</span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-item">
+
+
+                            <a asp-area="" asp-action="Index" asp-controller="mainCategory" asp-route-hashId=@HashId.Encode(item.Id) asp-route-maincategoryName=@item.maincategoryname.Replace(' ', '-') asp-route-categoryType="Product" class="dropdown-item mydropdown-item">
+                                <span class="pr-2">
+                                    همه پست های دسته
+                                    </span>
+                            </a>
+
+                        </li>
+                        @foreach (var cat in item.Categories)
+                        {
+
+                                <li class="dropdown-item">
+                                    <a asp-area="" asp-action="Index" asp-controller="category" asp-route-CategoryHashId=@HashId.Encode(cat.Id) asp-route-page=1 asp-route-pagetype="category" asp-route-SortOrder="Created-desc" asp-route-categoryType="Product" asp-route-categoryName="@cat.Name.Replace(" ","-")" class="dropdown-item">
+
+                                        <span class="pr-2"> @cat.Name</span>
+                                    </a>
+                                </li>
+
+
+                        }
+                    </ul>
+
+
+                </li>
+            }
+        }
+
+    </ul>
+</li>

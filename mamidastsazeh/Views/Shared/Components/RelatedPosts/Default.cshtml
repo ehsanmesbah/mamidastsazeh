@@ -1,0 +1,15 @@
+﻿@model IEnumerable<Post>
+
+<div class="row no-gutters pt-4">
+    <div class="col">
+        <h5 class="related-videos-title">محصولات مرتبط</h5>
+    </div>
+</div>
+<div class="row no-gutters py-3">
+    @foreach (var post in Model)
+    {
+        <div class="col-6 col-md-12 mb-2">
+            <partial name="_PostCardSidebar" model="post" />
+        </div>
+    }
+</div>

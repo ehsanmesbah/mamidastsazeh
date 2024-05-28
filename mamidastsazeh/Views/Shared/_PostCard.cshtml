@@ -1,0 +1,64 @@
+﻿@model Post
+@inject IHashId HashId
+@{
+}
+<div class="w-100">
+    <div class="video-thumbnail-container mb-0 border-0">
+
+
+        <div class="video-thumbnail">
+            <a asp-area="" asp-action="Index" asp-controller="Post" asp-route-hashId=@HashId.Encode(Model.ID)  target="_blank">
+                <img src="~/@Model.Thumbnail" style=" position: absolute; width: 95%; top: 0; bottom: 0;        left: 0;        right: 0;        margin: auto;" />
+                <span class="video-ratio"></span>
+                <like class="video-likes">
+                    @if (Model.PostTypeID != 5)
+                    {
+                        <i class="fas fa-heart small" style="color:red"></i>
+                        @Model.NumberOfLikes.ToString().ToPersianDigits()
+                    }
+                  
+
+                </like>
+                    <span class="video-veiws">
+                 
+                        <i class="fas fa-eye small" style="color:white"></i>
+
+                        @Model.NumberOfViews.ToString().ToPersianDigits()
+                  
+                    </span>
+                
+            </a>
+        </div>
+
+    </div>
+    <div class="video-info-container  pr-2">
+        @if (Model.PostTypeID == 5)
+        {
+            <a asp-area="" asp-action="Index" asp-controller="Post" asp-route-hashId=@HashId.Encode(Model.ID) class="video-title" target="_blank">
+                @Model.Title  @Model.DiscountPrice.ToString().ToPersianDigits() تومان 
+            </a>
+
+        }
+        else
+        {
+            <a asp-area="" asp-action="Index" asp-controller="Post" asp-route-hashId=@HashId.Encode(Model.ID) class="video-title" target="_blank">
+                @Model.Title
+            </a>
+        }
+        <div class="row w-100 justify-content-around">
+            <a class="text-decoration-none" asp-action="Index" asp-controller="Category" asp-route-categoryhashId=@HashId.Encode(Model.CategoryId==null?110:(int)Model.CategoryId) asp-route-page=1 asp-route-pagetype="category" asp-route-SortOrder="Created-desc">
+                <span class="video-category">
+                    <i class="fas fa-camera"></i>
+                    <span>@Model.Category.Name</span>
+                </span>
+            </a>
+            <a class="text-decoration-none" asp-area="" asp-controller="UserPosts" asp-action="Index" asp-route-nickName="@Model.User.NickName" asp-route-page="1" asp-route-pageType="UserPosts" asp-route-sortorder="Created-desc">
+                <span class="video-category">
+                    <i class="fas fa-user small align-content-end" style="color:black"></i>
+                    @Model.User.NickName
+                </span>
+            </a>
+        </div>
+        <video-created created="Model.Created"></video-created>
+    </div>
+</div>

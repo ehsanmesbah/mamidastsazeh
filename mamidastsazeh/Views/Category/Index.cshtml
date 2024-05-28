@@ -1,0 +1,43 @@
+﻿@model PostsPaginationViewModel
+@inject IHashId HashId
+@{
+    Layout = "_Layout";
+
+}
+
+
+<div class="container-fluid  home-page">
+    <div class="row">
+        <div class="d-flex justify-content-center text-center col-12 mb-2 pt-4">
+            <h1>
+                @if (Model.CategoryType.ToLower() == "product")
+                {
+                    <span>
+                        محصولات  : @Model.CategoryName
+                    </span>
+                }
+                else {
+                    <span>
+                        آموزش های  : @Model.CategoryName
+                    </span>
+                }
+            </h1>
+        </div>
+    </div>
+</div>
+<div class="container-fluid pt-1">
+    <vc:post-pagination input-model="Model"></vc:post-pagination>
+</div> 
+
+
+@section ViewStyleSheet  {
+    <link rel="stylesheet" href="~/css/VideoPlayer.min.css" />
+    <link rel="stylesheet" href="~/css/VideoPlayer.min.css" />
+    <link rel="stylesheet" href="~/css/Image1.min.css" />
+    <link rel="stylesheet" href="~/css/ChannelPartials.min.css" />
+    <link href="~/css/extra.min.css" rel="stylesheet" />
+}
+@section ViewScript{
+    <script src="~/js/JavaScript.min.js"></script>
+}
+

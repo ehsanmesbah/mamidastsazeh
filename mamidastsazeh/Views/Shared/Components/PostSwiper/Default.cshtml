@@ -1,0 +1,85 @@
+﻿@model IEnumerable<Post>
+@inject IHashId HashId;
+@{
+    var bakgroundcolor = "#FFF";
+    if (ViewData["swipertype"].ToString() == "mostview") bakgroundcolor = "#92e3a9";
+    if (ViewData["swipertype"].ToString() == "product") bakgroundcolor = "#ffa730";
+
+    else if (ViewData["swipertype"].ToString() == "new") bakgroundcolor = "#efc2d1";
+    else if (ViewData["swipertype"].ToString() == "business") bakgroundcolor = "#ffccbb";
+    else if (ViewData["swipertype"].ToString() == "maminevesht") bakgroundcolor = "#ffccbb";
+
+    else if (ViewData["swipertype"].ToString() == "download") bakgroundcolor = "#ffe6c5";
+
+}
+
+<div class="swiper-container pr-2 pl-2 pt-3 pb-3" style="background-color: @bakgroundcolor">
+
+    <div class="swiper-wrapper">
+        @if (ViewData["swipertype"].ToString() != "category"  && ViewData["swipertype"].ToString() != "video" && ViewData["swipertype"].ToString() != "random")
+        {
+
+            var swiperpicture = "/images/" + ViewData["swipertype"] + "1.png";
+        <div class="swiper-slide" style="background:transparent;">
+            @if (ViewData["swipertype"].ToString() == "business")
+
+
+            {
+                <a class="text-decoration-none" asp-area="" asp-action="index" asp-controller="category" asp-route-CategoryHashId=@HashId.Encode(136) asp-route-page=1 asp-route-pagetype="category" asp-route-SortOrder="Created-desc">
+                    <img style="width:100%" src=@swiperpicture>
+
+                </a>
+            }
+            else if (ViewData["swipertype"].ToString() == "maminevesht")
+
+
+            {
+            <a class="text-decoration-none" asp-area="" asp-action="index" asp-controller="maincategory" asp-route-HashId=@HashId.Encode(8)  asp-route-MaincategoryName="مامی نوشت">
+                <img style="width:100%" src=@swiperpicture>
+
+            </a>
+            }
+            else if (ViewData["swipertype"].ToString() == "download")
+            {
+            <a class="text-decoration-none" asp-area="" asp-action="index" asp-controller="maincategory" asp-route-HashId=@HashId.Encode(6) asp-route-MaincategoryName="دانلود">
+                <img style="width:100%" src=@swiperpicture>
+
+            </a>
+            }
+            else
+            {
+            <a asp-area="" asp-action="Index" asp-controller="SpecialPost" asp-route-pageType=@ViewData["swipertype"] class="p-0 m-0">
+
+                <img style="width:100%" src=@swiperpicture>
+
+            </a>
+            }
+        </div>
+        }
+        @foreach (var post in Model)
+        {
+            <div class="swiper-slide post-card">
+                @{
+                    await Html.RenderPartialAsync("_PostCard", post);
+                }
+            </div>
+        }
+        @if (ViewData["swipertype"].ToString() != "category" && ViewData["swipertype"].ToString() != "maminevesht" && ViewData["swipertype"].ToString() != "business" && ViewData["swipertype"].ToString() != "download" && ViewData["swipertype"].ToString() != "video" && ViewData["swipertype"].ToString() != "random")
+        {
+
+            var swiperpicture = "/images/more.png";
+            <div class="swiper-slide" style="background:transparent;">
+                <a asp-area="" asp-action="Index" asp-controller="SpecialPost" asp-route-pageType=@ViewData["swipertype"] class="p-0 m-0">
+
+                    <img style="width:100%" src=@swiperpicture>
+
+                </a>
+            </div>
+        }
+
+
+    </div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-pagination"></div>
+</div>

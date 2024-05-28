@@ -1,0 +1,144 @@
+﻿@model string
+@inject IHashId HashId
+@inject IPostRepository _posts
+@{
+    Layout = "_Layout";
+
+}
+
+
+<div class="container-fluid  home-page">
+    <div class="row">
+        <div class="d-flex justify-content-center text-center col-12 mb-2 pt-4">
+
+            @if (Model == "Training")
+            {
+                <h1>
+                    دسته بندی آموزش ها
+                </h1>
+            }
+            else
+            {
+                <h1>
+                    دسته بندی محصولات بازارچه
+                </h1>
+            }
+
+        </div>
+        @if (Model == "Training")
+        {
+            <div class="col-6 col-md-3 mt-2">
+                <a asp-area="" asp-action="Index" asp-controller="mainCategory" asp-route-hashId=@HashId.Encode(8) asp-route-maincategoryName='مامی-نوشت'>
+                    <img class="w-100" src="~/images/maminevesht.png" style="border-radius: 10px;" />
+
+                </a>
+            </div>
+        }
+        @if (Model == "Training")
+        {
+            <div class="col-6 col-md-3 mt-2">
+                <a asp-area="" asp-action="Index" asp-controller="mainCategory" asp-route-hashId=@HashId.Encode(8) asp-route-maincategoryName='دانلود'>
+
+                    <img class="w-100" src="~/images/download.png" style="border-radius: 10px;" />
+
+                </a>
+            </div>
+        }
+
+        <div class="col-6 col-md-3 mt-2">
+            <a asp-area="" asp-action="Index" asp-controller="mainCategory" asp-route-hashId=@HashId.Encode(3) asp-route-categoryType="Product" asp-route-maincategoryName='پوشاک'>
+
+                <img class="w-100" src="~/images/clothes.png" style="border-radius: 10px;" />
+                <span class="video-likes" style="padding-left:.7rem;color:#bb0000">
+                    @_posts.Posts.Where(p => p.Category.MainCategory.Id == 3 && p.PostTypeID == 5 && p.Poststate == PostState.Approved).Count().ToString().ToPersianDigits() محصول
+                </span>
+            </a>
+        </div>
+
+        <div class="col-6 col-md-3 mt-2">
+            <a asp-area="" asp-action="Index" asp-controller="mainCategory" asp-route-hashId=@HashId.Encode(5) asp-route-categoryType="Product" asp-route-maincategoryName='هنر'>
+
+                <img class="w-100" src="~/images/art.png" style="border-radius: 10px;" />
+                <span class="video-likes" style="padding-left:.7rem;color:#bb0000">
+                    @_posts.Posts.Where(p => p.Category.MainCategory.Id == 5 && p.PostTypeID == 5 && p.Poststate == PostState.Approved).Count().ToString().ToPersianDigits() محصول
+                </span>
+            </a>
+        </div>
+        <div class="col-6 col-md-3 mt-2">
+            <a asp-area="" asp-action="Index" asp-controller="mainCategory" asp-route-hashId=@HashId.Encode(4) asp-route-categoryType="Product" asp-route-maincategoryName='مناسبتها'>
+
+                <img class="w-100" src="~/images/celebration.png" style="border-radius: 10px;" />
+                <span class="video-likes" style="padding-left:.7rem;color:#bb0000">
+                    @_posts.Posts.Where(p => p.Category.MainCategory.Id == 4 && p.PostTypeID == 5 && p.Poststate == PostState.Approved).Count().ToString().ToPersianDigits() محصول
+                </span>
+            </a>
+        </div>
+
+        <div class="col-6 col-md-3 mt-2">
+            <a asp-area="" asp-action="Index" asp-controller="mainCategory" asp-route-hashId=@HashId.Encode(7) asp-route-categoryType="Product" asp-route-maincategoryName='سایر'>
+
+                <img class="w-100" src="~/images/other.png" style="border-radius: 10px;" />
+                <span class="video-likes" style="padding-left:.7rem;color:#bb0000">
+                    @_posts.Posts.Where(p => p.Category.MainCategory.Id == 7 && p.PostTypeID == 5 && p.Poststate == PostState.Approved).Count().ToString().ToPersianDigits() محصول
+                </span>
+            </a>
+        </div>
+        <div class="col-6 col-md-3 mt-2">
+            <a asp-area="" asp-action="Index" asp-controller="mainCategory" asp-route-hashId=@HashId.Encode(1) asp-route-categoryType="Product" asp-route-maincategoryName='خانه'>
+                <img class="w-100" src="~/images/house.png" style="border-radius: 10px;  top: 0; bottom: 0;        left: 0;        right: 0;        margin: auto;" />
+
+                <span class="video-likes" style="padding-left:.7rem;color:#bb0000">
+                    @_posts.Posts.Where(p => p.Category.MainCategory.Id == 1 && p.PostTypeID == 5 && p.Poststate == PostState.Approved).Count().ToString().ToPersianDigits() محصول
+                </span>
+            </a>
+        </div>
+        <div class="col-6 col-md-3 mt-2">
+            <a asp-area="" asp-action="Index" asp-controller="mainCategory" asp-route-hashId=@HashId.Encode(2) asp-route-categoryType="Product" asp-route-maincategoryName='بازسازی'>
+                <img class="w-100" src="~/images/renovation.png" style="border-radius: 10px;" />
+                <span class="video-likes" style="padding-left:.7rem;color:#bb0000">
+                    @_posts.Posts.Where(p => p.Category.MainCategory.Id == 2 && p.PostTypeID == 5 && p.Poststate == PostState.Approved).Count().ToString().ToPersianDigits() محصول
+                </span>
+            </a>
+        </div>
+        <div class="col-6 col-md-3 mt-2">
+            <a asp-area="" asp-action="Index" asp-controller="mainCategory" asp-route-hashId=@HashId.Encode(10) asp-route-categoryType="Product" asp-route-maincategoryName='بازسازی'>
+                <img class="w-100" src="~/images/beauty.png" style="border-radius: 10px;" />
+                <span class="video-likes" style="padding-left:.7rem;color:#bb0000">
+                    @_posts.Posts.Where(p => p.Category.MainCategory.Id == 10 && p.PostTypeID == 5 && p.Poststate == PostState.Approved).Count().ToString().ToPersianDigits() محصول
+                </span>
+            </a>
+        </div>
+        <div class="col-6 col-md-3 mt-2">
+            <a asp-area="" asp-action="Index" asp-controller="mainCategory" asp-route-hashId=@HashId.Encode(11) asp-route-categoryType="Product" asp-route-maincategoryName='بازسازی'>
+                <img class="w-100" src="~/images/book.png" style="border-radius: 10px;" />
+                <span class="video-likes" style="padding-left:.7rem;color:#bb0000">
+                    @_posts.Posts.Where(p => p.Category.MainCategory.Id == 11 && p.PostTypeID == 5 && p.Poststate == PostState.Approved).Count().ToString().ToPersianDigits() محصول
+                </span>
+            </a>
+        </div>
+        <div class="col-6 col-md-3 mt-2">
+            <a asp-area="" asp-action="Index" asp-controller="mainCategory" asp-route-hashId=@HashId.Encode(12) asp-route-categoryType="Product" asp-route-maincategoryName='بازسازی'>
+                <img class="w-100" src="~/images/food.png" style="border-radius: 10px;" />
+                <span class="video-likes" style="padding-left:.7rem;color:#bb0000">
+                    @_posts.Posts.Where(p => p.Category.MainCategory.Id == 12 && p.PostTypeID == 5 && p.Poststate == PostState.Approved).Count().ToString().ToPersianDigits() محصول
+                </span>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="container-fluid pt-1">
+
+</div>
+
+
+@section ViewStyleSheet  {
+    <link rel="stylesheet" href="~/css/VideoPlayer.min.css" />
+    <link rel="stylesheet" href="~/css/VideoPlayer.min.css" />
+    <link rel="stylesheet" href="~/css/Image1.min.css" />
+    <link rel="stylesheet" href="~/css/ChannelPartials.min.css" />
+    <link href="~/css/extra.min.css" rel="stylesheet" />
+}
+@section ViewScript{
+    <script src="~/js/JavaScript.min.js"></script>
+}
+

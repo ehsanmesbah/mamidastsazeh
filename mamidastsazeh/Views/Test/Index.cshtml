@@ -1,0 +1,20 @@
+﻿@model PostsPaginationViewModel
+@{
+    Layout = "_layout";
+}
+
+
+ <vc:post-pagination limit="Model.Limit" posts="Model.Posts" page="Model.Page" ></vc:post-pagination>
+   
+
+@section ViewStyleSheet {
+
+    <link rel="stylesheet" href="~/css/Featured.min.css" />
+}
+
+@section ViewScript{
+    <script src="~/js/VideoSlider.min.js"></script>
+    <script src="~/js/JavaScript.min.js"></script>
+    <script src="~/js/Featured.min.js"></script>
+
+}

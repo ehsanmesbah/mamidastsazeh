@@ -1,0 +1,26 @@
+﻿.category-list {
+    top: 180%;
+    min-width: 18.85rem;
+    border-radius: 0;
+    padding: 0;
+}
+
+    .category-list a {
+        padding: .85rem 0;
+    }
+
+        .category-list a:hover {
+            background-color: #f0f0f0;
+        }
+
+    .category-list i {
+        font-size: 1.3rem;
+    }
+
+.promoted div, .regular, .prominent div {
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.prominent:last-child {
+    border-bottom: 3px solid #ed145b;
+}

@@ -1,0 +1,28 @@
+﻿@{
+    //ViewBag.Title = "ثبت نام";
+    Layout = "_Layout";
+}
+
+@{
+
+    Layout = "_Layout";
+   
+}
+
+<div class="container pr-1">
+    <div class="row no-gutters">
+        <aside class=" col-3 d-md-flex align-items-stretch mt-5">
+            <partial name="_PanelMenu" />
+        </aside>
+        <main class="col-9 mt-5 pr-2">
+            <p> نام کاربری شما با موفقیت ساخته شد. در صورت تمایل می توانید اطلاعات تکمیلی خود را در صفحه تنظیمات کاربر از منوی سمت راست تکمیل نموده و آدرس صفحه اینستاگرام کاری خود را نیز وارد نمایید</p>
+            <a asp-action="Usersettings" asp-controller="Panel" asp-area="Membership" class="btn-pink pr-1 pl-1 ml-2"> تکمیل اطلاعات</a>
+        @{ 
+            
+            string returnUrl= (ViewBag.ReturnUrl != null) ? ViewBag.ReturnUrl : "/";
+        }
+            <a href="@returnUrl" class="btn-pink pr-1 pl-1"> ادامه</a>
+        </main>
+    </div>
+</div>
+

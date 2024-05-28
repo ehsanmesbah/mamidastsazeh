@@ -1,0 +1,158 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>6232f84f-7e06-4e04-aa74-3ca179b2c0d5</UserSecretsId>
+    <Platforms>AnyCPU;x64</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Views\Register\**" />
+    <Compile Remove="wwwroot\oldimages\**" />
+    <Content Remove="Views\Register\**" />
+    <Content Remove="wwwroot\oldimages\**" />
+    <EmbeddedResource Remove="Views\Register\**" />
+    <EmbeddedResource Remove="wwwroot\oldimages\**" />
+    <None Remove="Views\Register\**" />
+    <None Remove="wwwroot\oldimages\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\RegisterController.cs" />
+    <Compile Remove="Controllers\SeedController.cs" />
+    <Compile Remove="Data\FileDBCategoryRepository.cs" />
+    <Compile Remove="Data\FileDBContentTypeRepository.cs" />
+    <Compile Remove="Data\FileDBPostRepository.cs" />
+    <Compile Remove="Data\FileDBPostTypeRepository.cs" />
+    <Compile Remove="Migrations\20201030090028_update30.cs" />
+    <Compile Remove="Migrations\20201030090028_update30.Designer.cs" />
+    <Compile Remove="Migrations\20201030090351_update30.cs" />
+    <Compile Remove="Migrations\20201030090351_update30.Designer.cs" />
+    <Compile Remove="Migrations\20201030090908_update30.cs" />
+    <Compile Remove="Migrations\20201030090908_update30.Designer.cs" />
+    <Compile Remove="Migrations\20201107093554_update35.cs" />
+    <Compile Remove="Migrations\20201107093554_update35.Designer.cs" />
+    <Compile Remove="Migrations\20201107093809_update35.cs" />
+    <Compile Remove="Migrations\20201107093809_update35.Designer.cs" />
+    <Compile Remove="Migrations\20201110062755_update40.cs" />
+    <Compile Remove="Migrations\20201110062755_update40.Designer.cs" />
+    <Compile Remove="Migrations\20201110081015_update40.cs" />
+    <Compile Remove="Migrations\20201110081015_update40.Designer.cs" />
+    <Compile Remove="Migrations\20201114122325_update43.cs" />
+    <Compile Remove="Migrations\20201114122325_update43.Designer.cs" />
+    <Compile Remove="Migrations\20201114123113_update43.cs" />
+    <Compile Remove="Migrations\20201114123113_update43.Designer.cs" />
+    <Compile Remove="Migrations\20201114123626_update43.cs" />
+    <Compile Remove="Migrations\20201114123626_update43.Designer.cs" />
+    <Compile Remove="Migrations\20201201100708_update45.cs" />
+    <Compile Remove="Migrations\20201201100708_update45.Designer.cs" />
+    <Compile Remove="Migrations\20210726115153_update48.cs" />
+    <Compile Remove="Migrations\20210726115153_update48.Designer.cs" />
+    <Compile Remove="Migrations\20210726115340_update48.cs" />
+    <Compile Remove="Migrations\20210726115340_update48.Designer.cs" />
+    <Compile Remove="Migrations\20210804123427_update50.cs" />
+    <Compile Remove="Migrations\20210804123427_update50.Designer.cs" />
+    <Compile Remove="Migrations\20210808092038_update51.cs" />
+    <Compile Remove="Migrations\20210808092038_update51.Designer.cs" />
+    <Compile Remove="Migrations\20211113053025_update54.cs" />
+    <Compile Remove="Migrations\20211113053025_update54.Designer.cs" />
+    <Compile Remove="Migrations\20220208071330_update55.cs" />
+    <Compile Remove="Migrations\20220208071330_update55.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Areas\Membership\Views\Account\SuspendUser.cshtml" />
+    <Content Remove="bundleconfig.json" />
+    <Content Remove="wwwroot\css\Categories.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Data\Posts.db" />
+  </ItemGroup>
+ 
+ <ItemGroup>
+  <Content Update="wwwroot/**" CopyToPublishDirectory="Never" />
+  <Content Update="appsettings.json" CopyToPublishDirectory="Never" />
+</ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\css\Featured.min.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\Layout.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\SearchPage.min.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Areas\Membership\Views\Account\Index.cshtml" />
+    <None Include="Areas\Membership\Views\Admin\DeleteUser.cshtml" />
+    <None Include="Areas\Membership\Views\Admin\EditUser.cshtml" />
+    <None Include="Areas\Membership\Views\Admin\Users.cshtml" />
+    <None Include="Areas\Membership\Views\Panel\Index.cshtml" />
+    <None Include="Areas\Membership\Views\Panel\NoUser.cshtml" />
+    <None Include="bundleconfig.json" />
+    <None Include="Views\Shared\Components\ProfileDropDown\Default.cshtml" />
+    <None Include="Views\Shared\Components\ProfileDropDown\LoggedIn.cshtml" />
+    <None Include="Views\Shared\Components\Roles\Default.cshtml" />
+    <None Include="Views\Shared\Components\UsersPagination\Default.cshtml" />
+    <None Include="Views\Shared\Components\UsersPagination\NoUsers.cshtml" />
+    <None Include="wwwroot\css\SmartMenu\sm-blue\mixins\_round-corners-last-item.scss" />
+    <None Include="wwwroot\css\SmartMenu\sm-blue\mixins\_sub-items-indentation.scss" />
+    <None Include="wwwroot\css\SmartMenu\sm-blue\sm-blue.css.map" />
+    <None Include="wwwroot\css\SmartMenu\sm-blue\sm-blue.scss" />
+    <None Include="wwwroot\css\SmartMenu\sm-blue\_mixins.scss" />
+    <None Include="wwwroot\css\SmartMenu\sm-blue\_sm-blue-theme.scss" />
+    <None Include="wwwroot\css\SmartMenu\sm-clean\mixins\_round-corners-last-item.scss" />
+    <None Include="wwwroot\css\SmartMenu\sm-clean\mixins\_sub-items-indentation.scss" />
+    <None Include="wwwroot\css\SmartMenu\sm-clean\sm-clean.css.map" />
+    <None Include="wwwroot\css\SmartMenu\sm-clean\sm-clean.scss" />
+    <None Include="wwwroot\css\SmartMenu\sm-clean\_mixins.scss" />
+    <None Include="wwwroot\css\SmartMenu\sm-clean\_sm-clean-theme.scss" />
+    <None Include="wwwroot\css\SmartMenu\sm-mint\mixins\_sub-items-indentation.scss" />
+    <None Include="wwwroot\css\SmartMenu\sm-mint\sm-mint.css.map" />
+    <None Include="wwwroot\css\SmartMenu\sm-mint\sm-mint.scss" />
+    <None Include="wwwroot\css\SmartMenu\sm-mint\_mixins.scss" />
+    <None Include="wwwroot\css\SmartMenu\sm-mint\_sm-mint-theme.scss" />
+    <None Include="wwwroot\css\SmartMenu\sm-simple\mixins\_sub-items-indentation.scss" />
+    <None Include="wwwroot\css\SmartMenu\sm-simple\sm-simple.css.map" />
+    <None Include="wwwroot\css\SmartMenu\sm-simple\sm-simple.scss" />
+    <None Include="wwwroot\css\SmartMenu\sm-simple\_mixins.scss" />
+    <None Include="wwwroot\css\SmartMenu\sm-simple\_sm-simple-theme.scss" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BundlerMinifier.Core" Version="3.2.449" />
+    <PackageReference Include="DNTCaptcha.Core" Version="3.5.0" />
+    <PackageReference Include="dropzone" Version="4.3.0" />
+    <PackageReference Include="Hashids.net" Version="1.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="3.1.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.jQuery.Unobtrusive.Ajax" Version="3.2.6" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.2.0" />
+    <PackageReference Include="MiniProfiler.AspNetCore" Version="4.2.22" />
+    <PackageReference Include="MiniProfiler.AspNetCore.Mvc" Version="4.2.22" />
+    <PackageReference Include="MiniProfiler.EntityFrameworkCore" Version="4.2.22" />
+    <PackageReference Include="RestSharp" Version="106.11.7" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="1.0.1" />
+    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.2.5" />
+    <PackageReference Include="WebEssentials.AspNetCore.PWA" Version="1.0.65" />
+    <PackageReference Include="Xabe.FFmpeg" Version="4.4.0" />
+    <PackageReference Include="Xabe.FFmpeg.Downloader" Version="4.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Membership\Data\" />
+    <Folder Include="Areas\Membership\Models\" />
+    <Folder Include="wwwroot\lib\swiper\" />
+  </ItemGroup>
+
+</Project>

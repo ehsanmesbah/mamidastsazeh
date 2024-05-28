@@ -1,0 +1,102 @@
+﻿@model IEnumerable<Post>
+@inject IHashId HashId
+@{
+    Layout = "_Layout";
+    var pagenumber = System.Convert.ToInt32(ViewData["PageNumber"]);
+    var totalpage = System.Convert.ToInt32(ViewData["TotalPage"]);
+    var firstpageshow = pagenumber - 2;
+    var lastpageshow = pagenumber + 2;
+    if (firstpageshow <= 0)
+    {
+        firstpageshow = 1;
+        lastpageshow = 5;
+    }
+    if (lastpageshow >= totalpage)
+    {
+        firstpageshow = totalpage - 4;
+        lastpageshow = totalpage;
+    }
+    if (totalpage <= 5)
+    {
+        firstpageshow = 1;
+        lastpageshow = totalpage;
+    }
+}
+
+
+<div class="container-fluid  home-page">
+    <div class="row">
+        <div class="d-flex justify-content-center text-center col-12 mb-4 pt-4">
+
+            پست های  : @ViewData["CategoryName"]
+
+        </div>
+    </div>
+    <nav aria-label="Page navigation " class="pt-3 flex-wrap">
+        <ul class="pagination justify-content-center mypagination flex-wrap pr-0">
+            <li class="page-item ">
+                <a class="page-link" asp-area="" asp-action="Index" asp-controller="CustomizedType" asp-route-page=1 asp-route-hashId=@HashId.Encode(System.Convert.ToInt32( ViewData["CategoryId"].ToString())) asp-route-categoryName=@ViewData["CategoryName"] tabindex="-1" style="color:deeppink;">اولین</a>
+            </li>
+            @for (int i = firstpageshow; i <= lastpageshow; i++)
+            {
+                <li class="page-item pl-1 @(pagenumber==i ? "disabled":"") "><a asp-area="" class="page-link  @(pagenumber==i ? "border-danger":"")" asp-action="Index" asp-controller="CustomizedType" asp-route-page=@i asp-route-hashId=@HashId.Encode(System.Convert.ToInt32( ViewData["CategoryId"].ToString())) asp-route-categoryName=@ViewData["CategoryName"] style="color:deeppink;">@i.ToString().ToPersianDigits()</a></li>
+            }
+            <li class="page-item ">
+                <a class="page-link" asp-area="" asp-action="Index" asp-controller="CustomizedType" asp-route-page=@ViewData["TotalPage"] asp-route-hashId=@HashId.Encode(System.Convert.ToInt32( ViewData["CategoryId"].ToString())) asp-route-categoryName=@ViewData["CategoryName"] style="color:deeppink;">آخرین(@totalpage.ToString().ToPersianDigits())</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="row">
+
+        @if (Model != null)
+        {
+            <div class="container-fluid thumbnail-container  overflow-hidden">
+                <div class="row ">
+                    @foreach (var post in Model)
+                    {
+                        <div class="col-6 col-md-3 mb-3 ">
+                            <div class="post-card">
+                                @{
+                                    await Html.RenderPartialAsync("_PostCard", post);
+                                }
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+
+    </div>
+    <nav aria-label="Page navigation " class="pt-3 flex-wrap">
+        <ul class="pagination justify-content-center mypagination flex-wrap pr-0">
+            <li class="page-item ">
+                <a class="page-link" asp-area="" asp-action="Index" asp-controller="CustomizedType" asp-route-page=1 asp-route-hashId=@HashId.Encode(System.Convert.ToInt32( ViewData["CategoryId"].ToString())) asp-route-categoryName=@ViewData["CategoryName"] tabindex="-1" style="color:deeppink;">اولین</a>
+            </li>
+            @for (int i = firstpageshow; i <= lastpageshow; i++)
+            {
+                <li class="page-item pl-1 @(pagenumber==i ? "disabled":"") "><a asp-area="" class="page-link  @(pagenumber==i ? "border-danger":"")" asp-action="Index" asp-controller="CustomizedType" asp-route-page=@i asp-route-hashId=@HashId.Encode(System.Convert.ToInt32( ViewData["CategoryId"].ToString())) asp-route-categoryName=@ViewData["CategoryName"] style="color:deeppink;">@i.ToString().ToPersianDigits()</a></li>
+            }
+            <li class="page-item ">
+                <a class="page-link" asp-area="" asp-action="Index" asp-controller="CustomizedType" asp-route-page=@ViewData["TotalPage"] asp-route-hashId=@HashId.Encode(System.Convert.ToInt32( ViewData["CategoryId"].ToString())) asp-route-categoryName=@ViewData["CategoryName"] style="color:deeppink;">آخرین(@totalpage.ToString().ToPersianDigits())</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+
+@section ViewStyleSheet  {
+    <link rel="stylesheet" href="~/css/VideoPlayer.min.css" />
+    <link rel="stylesheet" href="~/css/VideoPlayer.min.css" />
+    <link rel="stylesheet" href="~/css/Image1.min.css" />
+    <link rel="stylesheet" href="~/css/ChannelPartials.min.css" />
+    <link href="~/css/extra.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/myswipper.min.css" />
+
+}
+@section ViewScript{
+    <script src="~/js/JavaScript.min.js"></script>
+    <script src="~/js/MySwiper.min.js"></script>
+
+}
+

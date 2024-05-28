@@ -1,0 +1,22 @@
+﻿@model UserRolesEditViewModel
+
+@{
+    Layout = null;
+}
+
+@foreach (var item in Model.UserInRoles)
+{
+    <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input"
+               name="roles" value="@item" id="role_@item" checked>
+        <label class="custom-control-label" for="role_@item">@item</label>
+    </div>
+}
+
+@foreach (var item in Model.UserOutRoles)
+{
+    <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" name="roles" value="@item" id="role_@item">
+        <label class="custom-control-label" for="role_@item">@item</label>
+    </div>
+}

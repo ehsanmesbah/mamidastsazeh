@@ -1,0 +1,41 @@
+﻿@model UserDeleteViewModel
+@{
+    ViewBag.Title = "حذف کاربر";
+    Layout = "_Layout";
+}
+
+<h5 class="panel-action-title">@ViewBag.Title</h5>
+
+<p class="text-danger">آیا می خواهید کاربر با مشخصات زیر را حذف کنید؟</p>
+
+<table class="table table-sm table-bordered">
+    <tr>
+        <th>نام</th>
+        <td>@Model.FullName</td>
+    </tr>
+    
+    <tr>
+        <th>نام کاربری</th>
+        <td>@Model.UserName</td>
+    </tr>
+    
+</table>
+
+<div class="text-danger" asp-validation-summary="ModelOnly"></div>
+
+<form asp-action="DeleteUser" method="post">
+    <input type="hidden" name="page" value="@ViewBag.Page" />
+    <input type="hidden" name="limit" value="@ViewBag.Limit" />
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-danger">
+            بله، حذف
+        </button>
+        <a class="btn btn-secondary" asp-action="Users" 
+           asp-route-page="@ViewBag.Page" asp-route-limit="@ViewBag.Limit">
+            خیر، بازگشت
+        </a>
+    </div>
+
+</form>

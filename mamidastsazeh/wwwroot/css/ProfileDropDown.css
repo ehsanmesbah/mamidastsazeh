@@ -1,0 +1,50 @@
+﻿.profile-dropdown {
+    text-decoration: none !important;
+}
+
+    .profile-dropdown::after {
+        display: none !important;
+    }
+
+.profile-image {
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    border-radius: 50%;
+    display: block;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+  
+}
+.profile-image-user-page {
+    width: 4rem;
+    height: 4rem;
+    padding: 0;
+    border-radius: 20%;
+    display: block;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+.profile-menu {
+    text-align: right;
+    min-width: 18.85rem;
+    border-radius: 0;
+    padding: .5rem 0;
+}
+
+    .profile-menu .dropdown-item {
+        color: #777 !important;
+        font-size: .8rem;
+    }
+
+    .profile-menu i {
+        margin-left: .2rem;
+        vertical-align: middle;
+    }
+
+    .profile-menu a.active {
+        color: #fff !important;
+    }

@@ -1,0 +1,116 @@
+﻿@model MobileViewModel
+@{
+    Layout = "_Layout";
+}
+
+<div class="container-fluid">
+    <div class="d-flex flex-column align-items-center justify-content-center">
+
+        <div class="card w-100 col-12 col-md-9 col-lg-6 shadow mt-3 shadow ml-1 mr-1">
+            <div class="card-body ">
+                    <h4 class="text-center mb-3" style="color:#ea1d5d;">
+                            @if (Model.Type == "ResetPassword")
+                            {
+                                <span>فراموشی رمز عبور</span>
+                            }
+                            else
+                            {
+                                <span>ثبت نام در مامی دستسازه</span>
+                            }
+                    </h4>
+                    <div asp-validation-summary="All" class="validation-error-message"></div>
+
+                    <form asp-action="VerifyMobile" asp-controller="Account" method="post">
+
+
+
+
+                        <input asp-for="Type" id="txtType" type="hidden" />
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <div>
+
+                                    <label class="alert-danger" id="errorLable" name="erroLable">
+                                        @if (Model != null && Model.Message != null)
+                                        {
+                                            @Model.Message;
+                                        }
+                                    </label>
+                                </div>
+                                <div class="form-group text-center">
+                                    <label class="text-center" style="color:black;background-color:pink">عضویت و ارسال مطلب در سایت کاملا رایگان است</label>
+                                </div>
+                                <div class="form-group get-mobile">
+                                    <label asp-for="MobileNumber"></label>
+                                    <span asp-validation-for="MobileNumber" class="validation-error-message"></span>
+                                    <input asp-for="MobileNumber" class="form-control" id="txtMobileNumber" />
+                                </div>
+                                <div class="get-mobile mb-3">
+                                    <dnt-captcha asp-captcha-generator-max="999"
+                                                 asp-captcha-generator-min="111"
+                                                 asp-captcha-generator-language="English"
+                                                 asp-captcha-generator-display-mode="ShowDigits"
+                                                 asp-use-relative-urls="true"
+                                                 asp-placeholder=" کد امنیتی تصویر بالا را وارد کنید"
+                                                 asp-validation-error-message="لطفا کد امنیتی تصویر بالا را وارد کنید"
+                                                 asp-font-name="Tahoma"
+                                                 asp-font-size="20"
+                                                 asp-fore-color="#333333"
+                                                 asp-back-color="#ccc"
+                                                 asp-text-box-class="text-box form-control"
+                                                 asp-text-box-template="<div class='input-group'><span class='input-group-prepend'><span class='input-group-text'><i class='fas fa-lock'></i></span></span>{0}</div>"
+                                                 asp-validation-message-class="text-danger"
+                                                 asp-refresh-button-class="fas fa-redo btn-sm"
+                                                 asp-use-noise="false" />
+                                </div>
+                                <input type="button" class="register-btn get-mobile btn w-100 mb-3" id="btnGet" value="ثبت نام" />
+                                <a asp-area="membership" asp-action="login" asp-controller="account" class="w-100 mt-2" style="color:#ea1d5d;">قبلا ثبت نام کرده اید؟ از اینجا وارد شوید</a>
+
+
+                            </div>
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                <div class="form-group get-code mb-3">
+                                    <label asp-for="Code"></label>
+                                    <span asp-validation-for="Code" class="validation-error-message"></span>
+                                    <input asp-for="Code" class="form-control" id="txtCode" />
+                                </div>
+                                <input type="hidden" name="ReturnUrl" id="ReturnUrl" value="@Model.ReturnUrl" />
+                                <button type="submit" class="btn register-btn mb-2">تایید</button>
+                                <input type="button" class="send-again btn register-btn mb-2" id="btnSendAgain" value="ارسال مجدد پیامک" />
+
+                            </div>
+
+                        </div>
+
+                        <div class="invisible">
+
+                            <ul class="nav nav-tabs col-12" style="align-items: center; justify-content: center;" id="myTab" role="tablist">
+                                <li class="nav-item mynavtabitem col-4 col-lg-2 pr-0 pl-0 pt-2 pb-2  text-center" style="align-items: center; justify-content: center;">
+                                    <a class="nav-link active pl-0 pr-0 tab1" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">1</a>
+                                </li>
+
+
+                                <li class="nav-item  mynavtabitem col-4 col-lg-2 pr-0 pl-0 pt-2 pb-2 text-center" style="align-items: center; justify-content: center;">
+                                    <a class="nav-link  pl-0 pr-0 tab2" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">2</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+@section ViewScript  {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/lib/jquery-ajax-unobtrusive/dist/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/js/Register.min.js"></script>
+}
+<script>
+    $("#dntCaptchaRefreshButton").click();
+</script>

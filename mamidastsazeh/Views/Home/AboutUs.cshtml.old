@@ -1,0 +1,152 @@
+﻿
+
+@model PostRepositoryViewModel;
+@inject IHashId HashId;
+<div class="container-fluid homepage" style="position:relative">
+
+    
+    <div class="row pt-4 pb-2  pr-md-5 pr-1 mt-3 mt-md-4" style="background-color:#E0E0E0 ">
+            <!-- <div class="container-fluid text-wrap  col-9" style="font-size:2vw;line-height:4vw;">
+
+                <a href="#specialposts" style="text-decoration:none;color:black;">
+               <p style="width:100%">
+                   شبکه اجتماعی مامی دست سازه
+               </p>
+               <p style="width:100%">
+                   ویژه بانوان هنرمند
+               </p>
+           </a>
+
+           <a href="#specialposts" class="btn-selectedposts btn btn-sm font-weight-lighter rounded-pill text-center" style="background-color: #CC3467;">
+               <span class=" text-white text-center ">
+                   مشاهده آموزش های منتخب مامی دست سازه
+               </span>
+           </a>
+                    -->
+        <div class="col-9" style="width:100%">
+            
+            <vc:post-swiper post-list-type="smallswiper" catid=1></vc:post-swiper>
+        </div>
+
+       
+        <div class="col-3 pr-0">
+            <img class="pb-2" src="~/postthumbnail/6389.jpg" style="width:100%" />
+
+        </div>
+
+
+    </div>
+    <div class="row pt-4" >
+        <div class="container-fluid pl-0 pr-2  col-4" style="text-align:center">
+            <a asp-action="Index" asp-controller="Category" asp-route-hashId=@HashId.Encode(136) asp-route-categoryName="ایده-کسب-کار" asp-route-pageNumber=1>
+              
+                    <img src="~/images/ideh.png" class="indexcategoryimage" />
+               
+            </a>
+        </div>
+        <div class="container-fluid pl-0 pr-0  col-4" style="text-align:center">
+            <a asp-action="Index" asp-controller="MainCategory" asp-route-hashId=@HashId.Encode(2) asp-route-maincategoryName="دانلود">
+                <img src="~/images/download.png" class="indexcategoryimage" />
+            </a>
+        </div>
+        <div class="container-fluid pl-0 pr-0 col-4"  style="text-align:center">
+            <a asp-action="Index" asp-controller="SearchPage" >
+                <img src="~/images/search.png" class="indexcategoryimage" />
+            </a>
+
+        </div>
+    </div>
+    <div class="row mt-4">
+
+        <div class="col-12 pt-2 pb-2" id="specialposts" name="specialposts" style="width:100%">
+
+            <div>
+                
+                <ul class="nav nav-tabs col-12" style="align-items: center; justify-content: center;" id="myTab" role="tablist">
+                    <li class="nav-item mynavtabitem col-4 col-lg-2 pr-0 pl-0 pt-2 pb-2  text-center" style="align-items: center; justify-content: center;">
+                        <a class="nav-link active pl-0 pr-0" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">پر بازدیدها</a>
+                    </li>
+
+
+                    <li class="nav-item mynavtabitem col-4 col-lg-2 pr-0 pl-0 pt-2 pb-2 text-center" style="align-items: center; justify-content: center;">
+                        <a class="nav-link  pl-0 pr-0" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">بیشترین لایک</a>
+                    </li>
+                    <li class="nav-item  mynavtabitem col-4 col-lg-2 pr-0 pl-0 pt-2 pb-2 text-center" style="align-items: center; justify-content: center;">
+                        <a class="nav-link  pl-0 pr-0" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">جدید ترین</a>
+                    </li>
+
+                </ul>
+            </div>
+            
+            <div class="tab-content" id="myTabContent" >
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <vc:post-swiper post-list-type="mostview" catid=1></vc:post-swiper>
+
+
+                    </div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <vc:post-swiper post-list-type='new' catid=1></vc:post-swiper>
+
+                    </div>
+                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                       
+                        <vc:post-swiper post-list-type='mostlike' catid=1></vc:post-swiper>
+                    </div>
+             </div>
+          
+
+            <!-- <vc:post-slider post-list-type="lastcreated" last-category-id=1></vc:post-slider>
+
+     <vc:post-slider post-list-type='mostlike' last-category-id=1></vc:post-slider>
+     <vc:post-slider post-list-type='mostview' last-category-id=1></vc:post-slider>
+     <vc:featured top="12" limit="24"></vc:featured>
+            -->
+        </div>
+    </div>
+    <div class="row col-12">
+        <p class="pt-5 pb-5" align="center" style="width:100%;font-size:3vw;">
+            بیش از 6 هزار آموزش در دسته بندی های مختلف
+
+        </p>
+    </div>
+    <div class="row pr-4 pt-2">
+        <div class="container align-items-center col-6 col-md-2">
+            <a asp-action="Index" asp-controller="MainCategory" asp-route-hashId=@HashId.Encode(1) asp-route-maincategoryName="خانه-ساختمان">
+                <img src="~/images/building.gif" class="indexcategoryimage" />
+            </a>
+        </div>
+        <div class="container align-items-center  col-6 col-md-2">
+            <a asp-action="Index" asp-controller="MainCategory" asp-route-hashId=@HashId.Encode(2) asp-route-maincategoryName="بازسازی">
+                <img src="~/images/repair.gif" class="indexcategoryimage" />
+            </a>
+        </div>
+        <div class="container  align-items-center col-6 col-md-2">
+            <a asp-action="Index" asp-controller="MainCategory" asp-route-hashId=@HashId.Encode(5) asp-route-maincategoryName="هنر">
+                <img src="~/images/art.gif" class="indexcategoryimage" />
+            </a>
+        </div>
+        <div class="container  align-items-center col-6 col-md-2">
+            <a asp-action="Index" asp-controller="MainCategory" asp-route-hashId=@HashId.Encode(3) asp-route-maincategoryName="پوشاک">
+                <img src="~/images/cloths.gif" class="indexcategoryimage" />
+            </a>
+        </div>
+        <div class="container  align-items-center col-6 col-md-2">
+            <a asp-action="Index" asp-controller="MainCategory" asp-route-hashId=@HashId.Encode(4) asp-route-maincategoryName="مناسبتها">
+                <img src="~/images/party.gif" class="indexcategoryimage" />
+            </a>
+        </div>
+
+    </div>
+    @section ViewStyleSheet {
+
+        <link rel="stylesheet" href="~/css/Featured.min.css" />
+    }
+
+    @section ViewScript{
+        <script src="~/js/VideoSlider.min.js"></script>
+        <script src="~/js/JavaScript.min.js"></script>
+        <script src="~/js/Featured.min.js"></script>
+
+    }
+
+</div>

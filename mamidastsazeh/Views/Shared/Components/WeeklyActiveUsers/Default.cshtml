@@ -1,0 +1,43 @@
+﻿
+@model IEnumerable<User>
+@inject IHashId HashId
+<!-- main cat-->
+<div class="card  shadow mb-2">
+    <!-- Menu Level 2 -->
+    <div class="mycard-title m-2  border-bottom" style="font-size:1rem;"><i class="fa fa-user ml-2"></i>کاربران فعال ماه</div>
+    <div class="mycard-body m-1">
+        @foreach (var item in Model)
+        {
+
+                <div class="w-100 mb-2">
+
+                    <div class="mb-1 d-flex flex-row">
+                        <a class="home-comment-card-item d-flex flex-row" asp-area="" asp-controller="UserPosts" asp-action="Index" asp-route-nickName="@item.NickName" asp-route-page="1" asp-route-pageType="UserPosts" asp-route-sortorder="Created-desc">
+
+                            <img class="profile-image" src=@("/ProfileImages/" + (string.IsNullOrEmpty(item.ProfileImage) ? "default.gif" : item.ProfileImage)) alt="Profile-Image" />
+
+                            @item.NickName
+
+                        </a>
+                    </div>
+                        <div class=" d-flex flex-row">
+                            @{
+                                var post = item.Posts.Where(p => p.UserId == item.Id && p.Poststate==PostState.Approved).OrderByDescending(p => p.Created).FirstOrDefault();
+
+                                if (post != null && !string.IsNullOrEmpty(post.Title))
+                                {
+
+                                    <a class="home-comment-user-card-item " asp-area="" asp-action="index" asp-controller="Post" asp-route-hashId=@HashId.Encode(post.ID)>
+                                        <span class="ml-1">آخرین ارسال:</span>@post.Title
+                                    </a>
+
+                                }
+                            }
+                        </div>
+                  
+
+                </div>
+            
+        }
+    </div>
+</div> 

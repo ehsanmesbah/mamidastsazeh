@@ -1,0 +1,42 @@
+﻿@model IEnumerable<MainCategory>
+@inject IHashId HashId
+
+<div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav  nav-fill w-100 ml-5">
+        @foreach (var item in Model)
+        {
+
+            <li class="dropdown nav-item active ">
+                <a class="nav-link dropdown-toggle justify-content-center " href="#" id="navbarDropdownMenuLink+@item.Id" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  role="button" >
+                    @item.maincategoryname
+                </a>
+                <div class="dropdown-menu   animate slideIn " aria-labelledby="navbarDropdownMenuLink+@item.Id">
+                    <a asp-area="" asp-action="Index" asp-controller="mainCategory" asp-route-hashId=@HashId.Encode(item.Id) asp-route-maincategoryName=@item.maincategoryname.Replace(' ','-') class="dropdown-item mydropdown-item">
+                        <span>
+                            همه پست های دسته
+                        </span>
+                    </a>
+                    @foreach (var catitem in item.Categories)
+                    {
+                        if (catitem.Id == 139)
+                        {
+                            <a asp-area="" asp-action="Index" asp-controller="CustomizedType" asp-route-hashId=1  asp-route-categoryName="ویدیو"  class="dropdown-item">
+
+                                @catitem.Name
+                            </a>
+                        }
+                        else
+                        {
+                            <a asp-area="" asp-action="Index" asp-controller="Category" asp-route-categoryHashId=@HashId.Encode(catitem.Id)  class="dropdown-item">
+                                @catitem.Name
+                            </a>
+                        }
+                    }
+                </div>
+            </li>
+        }
+
+
+    </ul>
+</div>
+ 

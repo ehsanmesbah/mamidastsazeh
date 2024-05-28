@@ -1,0 +1,72 @@
+﻿@model Post
+
+@inject Microsoft.Extensions.Configuration.IConfiguration Configuration
+@inject IHashId HashId
+
+<div class="d-flex flex-column video-description">
+
+    <div class="d-flex mt-2 mb-2">
+        <div class="lighter-font ml-2">
+            <a class="text-decoration-none" asp-area="" asp-controller="UserPosts" asp-action="Index" asp-route-nickName="@Model.User.NickName" asp-route-page="1" asp-route-pageType="UserPosts" asp-route-sortorder="Created-desc">
+                <img class="profile-image-user-page" src=@("/ProfileImages/" + (string.IsNullOrEmpty(Model.User.ProfileImage) ? "default.gif" : Model.User.ProfileImage)) alt="Profile-Image" />
+            </a>
+        </div>
+        <div class="mb-2 flex-grow-1 text-decoration-none lighter-font">
+            <p class="mb-1">
+                <a class="text-decoration-none" asp-area="" asp-controller="UserPosts" asp-action="Index" asp-route-nickName="@Model.User.NickName" asp-route-page="1" asp-route-pageType="UserPosts" asp-route-sortorder="Created-desc">  @Model.User.NickName</a>
+            </p>
+            @if (!string.IsNullOrEmpty(Model.User.InstaAddress))
+            {
+                if (Model.PostTypeID == 5)
+                {
+                    <p class="mb-1 font-weight-bolder">
+                        <a class="text-decoration-none" href=@("https://instagram.com/" + Model.User.InstaAddress.Replace("@", ""))>اینستاگرام فروشنده</a>
+                    </p>
+                }
+                else
+                {
+                    <p class="mb-1">
+                        <a class="text-decoration-none" href=@("https://instagram.com/" + Model.User.InstaAddress.Replace("@", ""))>صفحه اینستاگرام</a>
+                    </p>
+                }
+            }
+
+        </div>
+    </div>
+    <div class="container-fluid">
+
+        <h1>@ViewBag.PostTitle </h1>
+
+    </div>
+
+    <p style="line-height:normal" class="break-word word-break text-break">
+
+        <span style="white-space: pre-line">@Html.Raw(Model.Description)</span>
+
+    </p>
+    @if (Model.PostType.ID == 5)
+    {
+        <p class="lighter-font text-break break-word">
+            <del>
+                قیمت: @Model.Price.ToString().ToPersianDigits()
+            </del>
+        </p>
+        <p class="text-break break-word " style="color:red">
+            قیمت با تخفیف: @Model.DiscountPrice.ToString().ToPersianDigits()  تومان
+        </p>
+        <p class="lighter-font text-break break-word">
+            نحوه ارسال: @Model.SendType
+        </p>
+        <div class="container-fluid w-100 text-center">
+            <h5>
+                <a class="text-decoration-none" style="color:red;" href=@("https://instagram.com/" + Model.User.InstaAddress.Replace("@", ""))>میخوای بخری؟ 
+                  <i class="fas fa-hand-point-left"></i>                 
+                اینستاگرام فروشنده</a>
+            </h5>
+        </div>
+
+    }
+
+
+
+</div>

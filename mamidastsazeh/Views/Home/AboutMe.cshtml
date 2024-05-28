@@ -1,0 +1,178 @@
+﻿
+
+
+@{
+    Layout = "_Layout2";
+}
+<div class="container-fluid homepage" style="position:relative;background:#EAE7E7">
+    <div class="row mt-5">
+        <div class="d-none d-md-block col-md-4"></div>
+        <div class="col-12 col-md-4 ">
+            <div class="col-12  d-flex justify-content-center">
+                <img src="~/images/aboutme.jpg" class="w-50" alt="سمیه آقاجانی" style="border-radius:50%;" />
+            </div>
+            <div class="h3 row aboutmediv mt-4  d-flex justify-content-center">
+
+                سمیه آقاجانی
+
+            </div>
+            <div class="row mt-4 d-flex justify-content-center">
+                🎓
+                مهندس نرم افزار از
+                <a href="https://www.sbu.ac.ir/">&nbsp;دانشگاه شهید بهشتی&nbsp;</a>
+                🎓
+
+            </div>
+            <div class="row mt-4  d-flex justify-content-center">
+                <a href="https://mamidastsazeh.com">
+                    <div class="btn btn-sm rounded-pill text-center btn-aboutme">
+                        <span class=" text-white text-center pt-0 ">
+                            سایت مامی دست سازه
+                        </span>
+                    </div>
+                </a>
+            </div>
+           
+            <div class="row mt-4  d-flex justify-content-center">
+                <a href="~/specialpost/product">
+                    <div class="btn btn-sm rounded-pill text-center btn-aboutme">
+                        <span class=" text-white text-center pt-0 ">
+                            بازارچه
+                        </span>
+                    </div>
+                </a>
+            </div>
+            <div class="row mt-4  d-flex justify-content-center">
+                <a href="https://castbox.fm/vc/4486401">
+                    <div class="btn btn-sm rounded-pill text-center btn-aboutme">
+                        <span class=" text-white text-center pt-0 ">
+                            پادکست مامی
+                        </span>
+                    </div>
+                </a>
+            </div>
+            <div class="row mt-4  d-flex justify-content-center">
+                @{ 
+                    var youtubelink= "https://youtube.com/@SomayehAghajani?sub_confirmation=1";
+                }
+                <a href="@youtubelink">
+                    <div class="btn btn-sm rounded-pill text-center btn-aboutme">
+                        <span class=" text-white text-center pt-0 ">
+                            یوتیوب مامی Youtube
+                        </span>
+                    </div>
+                </a>
+            </div>
+            <div class="row mt-4  d-flex justify-content-center">
+                <a href="https://www.instagram.com/mamibussiness/">
+                    <div class="btn btn-sm rounded-pill text-center btn-aboutme">
+                        <span class=" text-white text-center pt-0 ">
+                            آموزش کسب و کار با مامی
+                        </span>
+                    </div>
+                </a>
+            </div>
+            <div class="row mt-4  d-flex justify-content-center">
+                <a href="https://instagram.com/mami_admin">
+                    <div class="btn btn-sm rounded-pill text-center btn-aboutme">
+                        <span class=" text-white text-center pt-0 ">
+                            تبلیغات
+                        </span>
+                    </div>
+                </a>
+            </div>
+            <div class="row mt-4  d-flex justify-content-center">
+                <a href="https://mamidastsazeh.com/home/aboutus">
+                    <div class="btn btn-sm rounded-pill text-center btn-aboutme">
+                        <span class=" text-white text-center pt-0 ">
+                            درباره من
+                        </span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="row mt-4 mb-4 d-flex justify-content-center">
+                <a href="https://wa.me/message/MBMSBL6ADR2AB1">
+                    <div class="btn btn-sm rounded-pill text-center btn-aboutme">
+                        <span class="fab fa-telegram" style="color:white;"></span>
+                        <span class=" text-white text-center pt-0 ">
+                            تماس با ما
+                        </span>
+                    </div>
+                </a>
+
+            </div>
+            <!--
+
+       <div class="row mt-4  d-flex justify-content-center">
+           <a href="https://mamidastsazeh.com/Membership/Account/VerifyMobile?returnUrl=%2F">
+               <div class="btn btn-sm rounded-pill text-center btn-aboutme">
+                   <span class=" text-white text-center pt-0 ">
+                       عضوت در جامعه هنرمندان مامی
+                   </span>
+               </div>
+           </a>
+       </div>
+       <div class="row mt-4  d-flex justify-content-center">
+           <a href="https://mamidastsazeh.com/category/WbXdqMKdEG/category/1/Created-desc">
+
+               <div class="btn btn-sm rounded-pill text-center btn-aboutme">
+                   <span class=" text-white text-center pt-0 ">
+                       آموزش رایگان کسب و کار
+                   </span>
+               </div>
+           </a>
+       </div>
+       <div class="row mt-4  d-flex justify-content-center">
+           <a href="https://mamidastsazeh.com/maincategory/ak9VeDn3Lg/دانلود">
+               <div class="btn btn-sm rounded-pill text-center btn-aboutme">
+                   <span class=" text-white text-center pt-0 ">
+                       دانلود رایگان هنری
+                   </span>
+               </div>
+           </a>
+       </div>
+       <div class="row mt-4  d-flex justify-content-center">
+           <a href="https://mamidastsazeh.com/home/ads">
+               <div class="btn btn-sm rounded-pill text-center btn-aboutme">
+                   <span class=" text-white text-center pt-0 ">
+                       تبلیغات در مامی دستسازه
+                   </span>
+               </div>
+           </a>
+       </div>
+       <div class="row mt-4  d-flex justify-content-center">
+           <a href="https://t.me/mami_ads">
+               <div class="btn btn-sm rounded-pill text-center btn-aboutme">
+                   <span class=" text-white text-center pt-0 ">
+                       مشاوره کسب و کار
+                   </span>
+               </div>
+           </a>
+       </div>
+
+    -->
+
+        </div>
+
+    </div>
+
+</div>
+
+
+@section ViewStyleSheet {
+
+
+    <link rel="stylesheet" href="~/css/Featured.min.css" />
+    <link rel="stylesheet" href="~/css/AboutMe.css" />
+
+}
+
+@section ViewScript{
+    <script src="~/js/VideoSlider.min.js"></script>
+    <script src="~/js/JavaScript.min.js"></script>
+    <script src="~/js/Featured.min.js"></script>
+
+}
+
+

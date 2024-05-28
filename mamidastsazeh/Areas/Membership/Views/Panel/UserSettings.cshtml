@@ -1,0 +1,94 @@
+﻿@model UserUpdateViewModel
+
+@{
+
+    Layout = "_Layout";
+}
+
+<div class="container pr-1">
+    <div class="row no-gutters">
+        <aside class=" col-3 d-md-flex align-items-stretch mt-5">
+            <partial name="_PanelMenu" />
+        </aside>
+        <main class="col-9 mt-5 pr-2">
+
+            <p class="text-success">@ViewBag.UserSettingSuccessMessage</p>
+            <p class="text-danger">@ViewBag.UserSettingFailMessage</p>
+
+            <div class="text-danger" asp-validation-summary="All"></div>
+
+            <form asp-action="UserSettings" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label asp-for="Mobile"></label>
+                    <span asp-validation-for="Mobile" class="validation-error-message"></span>
+                    <input asp-for="Mobile" class="form-control " readonly />
+                </div>
+                <div class="form-group">
+                    <label asp-for="FullName"></label>
+                    <span asp-validation-for="FullName" class="validation-error-message"></span>
+                    <input asp-for="FullName" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="NickName"></label>
+                    <span asp-validation-for="NickName" class="validation-error-message"></span>
+                    <input asp-for="NickName" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="InstaAddress"></label>
+                    <span asp-validation-for="InstaAddress" class="validation-error-message"></span>
+                    <input asp-for="InstaAddress" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" asp-for="IsBusiness" class="pl-2" onclick="togglebunisess()" />فروشگاه آنلاین دارم
+                </div>
+
+
+                <div id="isBusinessDiv">
+                    <div class="form-group">
+                        <label asp-for="BusinessPersianName"></label>
+                        <span asp-validation-for="BusinessPersianName" class="validation-error-message"></span>
+                        <input asp-for="BusinessPersianName" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="BusinessName"></label>
+                        <span asp-validation-for="BusinessName" class="validation-error-message"></span>
+                        <input asp-for="BusinessName" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Province"></label>
+                        <span asp-validation-for="Province" class="validation-error-message"></span>
+                        <select class="form-control p-0" asp-for="Province"
+                                asp-items="@new SelectList(Model.Provinces, nameof(Province.Id), nameof(Province.Name),Model.Province)">
+                            <option value="" selected>یک استان را انتخاب کنید ...</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="City"></label>
+                        <span asp-validation-for="City" class="validation-error-message"></span>
+                        <input asp-for="City" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description"></label>
+                    <span asp-validation-for="Description" class="validation-error-message"></span>
+                    <textarea asp-for="Description" class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ProfileImage"></label>
+                    <span asp-validation-for="ProfileImage" class="validation-error-message"></span>
+                    <input type="file" asp-for="ProfileImage" class="form-control" accept="image/*" />
+                </div>
+
+
+
+                <button type="submit" class="btn btn-primary">ذخیره</button>
+            </form>
+        </main>
+    </div>
+</div>
+@section ViewScript  {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/lib/jquery-ajax-unobtrusive/dist/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/js/userSetting.min.js"></script>
+}

@@ -1,0 +1,270 @@
+﻿
+@model PostRepositoryViewModel;
+@inject IHashId HashId;
+@inject IPostRepository _posts;
+<div class="container-fluid homepage" style="position:relative">
+    <div class="row  d-flex justify-content-center pr-2 pl-2">
+
+        @*<div class="col-6 mt-3 col-md-3 p-1">
+            <a href="~/maincategory/AllMainCategory/Product">
+                <img src="~/images/visitproduct.jpg" class="w-100" style="border-radius: 10px;" />
+                <span class="Category-productcount">
+                    @_posts.Posts.Where(p => p.PostTypeID == 5 && p.Poststate == PostState.Approved).Count().ToString().ToPersianDigits() محصول
+                </span>
+            </a>
+        </div>
+        <div class="col-6 mt-3 col-md-3 p-1">
+            <a href="~/home/mamitrainings">
+                <img src="~/images/training.jpg" class="w-100" style="border-radius: 10px;" />
+            </a>
+        </div>*@
+        <div class="col-6 mt-3 col-md-3 p-1">
+            <a href="https://instagram.com/mamidastsazeh">
+                <img src="~/images/index_instagram.jpg" class="w-100" style="border-radius: 10px;" />
+            </a>
+        </div>
+        <div class="col-6 mt-3 col-md-3 p-1">
+            @{
+                var youtubelink = "https://youtube.com/@SomayehAghajani?sub_confirmation=1";
+            }
+            <a href="@youtubelink">
+                <img src="~/images/index_youtube.jpg" class="w-100" style="border-radius: 10px;" />
+            </a>
+        </div>
+        <div class="col-6 mt-3 col-md-3 p-1">
+            <a href="https://instagram.com/mamibussiness">
+                <img src="~/images/index_myinstagram.jpg" class="w-100" style="border-radius: 10px;" />
+            </a>
+        </div>
+        <div class="col-6 mt-3 col-md-3 p-1">
+            <a href="https://t.me/mamidastsazeh">
+                <img src="~/images/index_telegram.jpg" class="w-100" style="border-radius: 10px;" />
+            </a>
+        </div>
+    </div>
+    <div class="container-fluid mt-3 p-0">
+        <vc:post-swiper post-list-type='product' catid=1 category-type=""></vc:post-swiper>
+    </div>
+    <div class="container-fluid mt-2 p-0">
+        <vc:post-swiper post-list-type='new' catid=1 category-type=""></vc:post-swiper>
+    </div>
+
+    <!--
+    <div class="row pt-4 pr-2">
+        <div class="container-fluid pl-0 pr-0  col-4" style="text-align:center">
+            <img src="~/images/build.png" class="indexcategoryimage" />
+
+        </div>
+        <div class="container-fluid pl-0 pr-0  col-4" style="text-align:center">
+            <img src="~/images/enjoy.png" class="indexcategoryimage" />
+        </div>
+        <div class="container-fluid pl-0 pr-0 col-4" style="text-align:center">
+            <img src="~/images/save.png" class="indexcategoryimage" />
+        </div>
+    </div>
+    <div class="row mt-2 text-center justify-content-center">
+        <p class="d-none d-md-block col-md-4" style="align-self: center; font-size: 1.5rem;color:red;">
+            600 هزار عضو در اینستاگرام
+        </p>
+        <a href="https://instagram.com/mamidastsazeh" class="col-12 col-md-4">
+            <img src="~/images/insta.jpg" class="w-100" />
+        </a>
+        <p class="d-none d-md-block col-md-4" style="align-self: center; font-size: 1.5rem;color:red;">
+            آرشیو 6000 هزار آموزش
+        </p>
+    </div>
+
+        -->
+    <!--<div class="container-fluid mt-3">
+         <vc:post-swiper-title action="index" controller="category" id="136" title="-"></vc:post-swiper-title>
+        <vc:post-swiper post-list-type='business' catid=136></vc:post-swiper>
+    </div>-->
+    <div class="container-fluid mt-3 p-0">
+        <vc:post-swiper post-list-type='maminevesht' catid=1 category-type=""></vc:post-swiper>
+    </div>
+    <div class="container-fluid mt-3">
+        <vc:post-swiper post-list-type="download" catid="1" category-type=""></vc:post-swiper>
+    </div>
+    <div class="container-fluid text-center mt-2 ">
+        <a href="~/maincategory/AllMainCategory/Product">
+            <img src="/images/bazarche.jpg" class="w-75" style="border-radius: 10px;" />
+        </a>
+    </div>
+    <div class="row d-flex flex-wrap p-1">
+        <div class="col-4 col-md-2 mt-2  p-1">
+            <a asp-area="" asp-action="Index" asp-controller="mainCategory" asp-route-hashId=@HashId.Encode(3) asp-route-categoryType="Product" asp-route-maincategoryName='پوشاک'>
+
+                <img class="w-100" src="~/images/clothes.png" style="border-radius: 10px;" />
+                <span class="Category-productcount">
+                    @_posts.Posts.Where(p => p.Category.MainCategory.Id == 3 && p.PostTypeID == 5 && p.Poststate == PostState.Approved).Count().ToString().ToPersianDigits() محصول
+                </span>
+            </a>
+        </div>
+
+        <div class="col-4 col-md-2 mt-2  p-1">
+            <a asp-area="" asp-action="Index" asp-controller="mainCategory" asp-route-hashId=@HashId.Encode(5) asp-route-categoryType="Product" asp-route-maincategoryName='هنر'>
+
+                <img class="w-100" src="~/images/art.png" style="border-radius: 10px;" />
+                <span class="Category-productcount">
+                    @_posts.Posts.Where(p => p.Category.MainCategory.Id == 5 && p.PostTypeID == 5 && p.Poststate == PostState.Approved).Count().ToString().ToPersianDigits() محصول
+                </span>
+            </a>
+        </div>
+        <div class="col-4 col-md-2 mt-2  p-1">
+            <a asp-area="" asp-action="Index" asp-controller="mainCategory" asp-route-hashId=@HashId.Encode(4) asp-route-categoryType="Product" asp-route-maincategoryName='مناسبتها'>
+
+                <img class="w-100" src="~/images/celebration.png" style="border-radius: 10px;" />
+                <span class="Category-productcount">
+                    @_posts.Posts.Where(p => p.Category.MainCategory.Id == 4 && p.PostTypeID == 5 && p.Poststate == PostState.Approved).Count().ToString().ToPersianDigits() محصول
+                </span>
+            </a>
+        </div>
+
+
+        <div class="col-4 col-md-2 mt-2  p-1">
+            <a asp-area="" asp-action="Index" asp-controller="mainCategory" asp-route-hashId=@HashId.Encode(10) asp-route-categoryType="Product" asp-route-maincategoryName='آرایشی'>
+                <img class="w-100" src="~/images/beauty.png" style="border-radius: 10px;  top: 0; bottom: 0;        left: 0;        right: 0;        margin: auto;" />
+
+                <span class="Category-productcount">
+                    @_posts.Posts.Where(p => p.Category.MainCategory.Id == 10 && p.PostTypeID == 5 && p.Poststate == PostState.Approved).Count().ToString().ToPersianDigits() محصول
+                </span>
+            </a>
+        </div>
+        <div class="col-4 col-md-2 mt-2  p-1">
+            <a asp-area="" asp-action="Index" asp-controller="mainCategory" asp-route-hashId=@HashId.Encode(12) asp-route-categoryType="Product" asp-route-maincategoryName='خوراکی'>
+                <img class="w-100" src="~/images/food.png" style="border-radius: 10px;  top: 0; bottom: 0;        left: 0;        right: 0;        margin: auto;" />
+
+                <span class="Category-productcount">
+                    @_posts.Posts.Where(p => p.Category.MainCategory.Id == 12 && p.PostTypeID == 5 && p.Poststate == PostState.Approved).Count().ToString().ToPersianDigits() محصول
+                </span>
+            </a>
+        </div>
+        <div class="col-4 col-md-2 mt-2  p-1">
+            <a asp-area="" asp-action="Index" asp-controller="mainCategory" asp-route-hashId=@HashId.Encode(11) asp-route-categoryType="Product" asp-route-maincategoryName='آموزشی'>
+                <img class="w-100" src="~/images/book.png" style="border-radius: 10px;" />
+                <span class="Category-productcount">
+                    @_posts.Posts.Where(p => p.Category.MainCategory.Id == 11 && p.PostTypeID == 5 && p.Poststate == PostState.Approved).Count().ToString().ToPersianDigits() محصول
+                </span>
+            </a>
+        </div>
+
+    </div>
+    <!--div class="container-fluid mt-3">
+        <vc:post-swiper post-list-type="mostview" catid=1></vc:post-swiper>
+    <div-->
+
+    <div class="row m-1 mt-2 home-page-form">
+        <div class="col-12 col-md-4 mt-3">
+            <vc:home-page-new-comments></vc:home-page-new-comments>
+        </div>
+        <div class="col-12 col-md-4 mt-3 ">
+            <vc:weekly-active-users></vc:weekly-active-users>
+        </div>
+        <div class="col-12 col-md-4 mt-3 ">
+            <vc:home-page-most-viewed></vc:home-page-most-viewed>
+        </div>
+    </div>
+
+    <div class="row pt-4">
+        <div class="container-fluid pl-0 pr-2  col-4" style="text-align:center">
+            <a asp-action="Index" asp-controller="Category" asp-route-categoryhashId=@HashId.Encode(136) asp-route-page=1 asp-route-pagetype="category" asp-route-SortOrder="Created-desc">
+
+                <img src="~/images/ideh.png" class="indexcategoryimage" />
+
+            </a>
+        </div>
+        <div class="container-fluid pl-0 pr-0  col-4" style="text-align:center">
+            <a asp-action="Index" asp-controller="MainCategory" asp-route-hashId=@HashId.Encode(6) asp-route-maincategoryName="دانلود">
+                <img src="~/images/download.gif" class="indexcategoryimage" />
+            </a>
+        </div>
+        <div class="container-fluid pl-0 pr-0 col-4" style="text-align:center">
+            <a asp-action="Index" asp-controller="SearchPage">
+                <img src="~/images/search.png" class="indexcategoryimage" />
+            </a>
+
+        </div>
+    </div>
+    @{
+        Random random = new Random();
+        int randomCategory = random.Next(101, 134);
+
+        <div class="container-fluid mt-5 p-0">
+            <vc:post-swiper-title action="index" controller="category" id="@randomCategory" title="-"></vc:post-swiper-title>
+            <vc:post-swiper post-list-type='category' catid=@randomCategory category-type="Training"></vc:post-swiper>
+        </div>
+    }
+
+
+    <!--
+    <div class="container-fluid mt-5">
+        <vc:post-swiper-title action="index" controller="customizedtype" id="1" title="ویدیو های آموزشی"></vc:post-swiper-title>
+        <vc:post-swiper post-list-type="video" catid=1></vc:post-swiper>
+    </div>-->
+    <!--div class="mt-5 p-0">
+        <div>
+            <a href="#" class=" text-decoration-none "><div class="mr-2"><h4 style="color:black">آموزش های تصادفی</h4></div></a>
+        </div>
+        <vc:post-swiper post-list-type="random" catid=1 category-type=""></vc:post-swiper>
+    </!--div-->
+    <!--
+    <div class="container-fluid mt-5">
+        <vc:post-swiper-title action="index" controller="category" id="121" title="روز عشق"></vc:post-swiper-title>
+        <vc:post-swiper post-list-type='category' catid=121></vc:post-swiper>
+    </div>
+    -->
+    <div class="row col-12">
+        <p class="pt-5 pb-5" align="center" style="width:100%;font-size:3vw;">
+            بیش از هفت هزار آموزش در دسته بندی های مختلف
+
+        </p>
+    </div>
+    <div class="row pr-4 pt-2">
+        <div class="container align-items-center col-6 col-md-2">
+            <a asp-action="Index" asp-controller="MainCategory" asp-route-hashId=@HashId.Encode(1) asp-route-maincategoryName="خانه-ساختمان">
+                <img src="~/images/building.gif" class="indexcategoryimage" />
+            </a>
+        </div>
+        <div class="container align-items-center  col-6 col-md-2">
+            <a asp-action="Index" asp-controller="MainCategory" asp-route-hashId=@HashId.Encode(2) asp-route-maincategoryName="بازسازی">
+                <img src="~/images/repair.gif" class="indexcategoryimage" />
+            </a>
+        </div>
+        <div class="container  align-items-center col-6 col-md-2">
+            <a asp-action="Index" asp-controller="MainCategory" asp-route-hashId=@HashId.Encode(5) asp-route-maincategoryName="هنر">
+                <img src="~/images/art.gif" class="indexcategoryimage" />
+            </a>
+        </div>
+        <div class="container  align-items-center col-6 col-md-2">
+            <a asp-action="Index" asp-controller="MainCategory" asp-route-hashId=@HashId.Encode(3) asp-route-maincategoryName="پوشاک">
+                <img src="~/images/cloths.gif" class="indexcategoryimage" />
+            </a>
+        </div>
+        <div class="container  align-items-center col-6 col-md-2">
+            <a asp-action="Index" asp-controller="MainCategory" asp-route-hashId=@HashId.Encode(4) asp-route-maincategoryName="مناسبتها">
+                <img src="~/images/party.gif" class="indexcategoryimage" />
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+
+@section ViewStyleSheet {
+
+    <link rel="stylesheet" href="~/css/Featured.min.css" />
+    <link rel="stylesheet" href="~/css/myswipper.min.css" />
+    <link rel="stylesheet" href="~/css/index.min.css" />
+
+}
+
+@section ViewScript{
+    <script src="~/js/VideoSlider.min.js"></script>
+    <script src="~/js/JavaScript.min.js"></script>
+    <script src="~/js/Featured.min.js"></script>
+    <script src="~/js/MySwiper.min.js"></script>
+
+}
+
+

@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Post>
+@inject IHashId hashId;
+@{
+    ViewBag.Title = "آموزش های من";
+    Layout = "_Layout";
+}
+
+<div class="container-fluid pr-1">
+    <div class="row no-gutters">
+        @if (Model.Count() > 0)
+        {
+            <div class="mt-3 mb-2 mr-2 ml-2 w-100"><a href="~/userposts/UserPosts/1/Created-desc/@Model.First().User.NickName">مشاهده صفحه اختصاصی شما از دید کاربران و اشتراک گذاری (اینجا را کلیک کنید)</a></div>
+        }
+        <aside class=" col-3 d-md-flex align-items-stretch mt-5">
+            <partial name="_PanelMenu" />
+        </aside>
+        <main class="col-9">
+
+            <table class="table table-striped table-bordered text-center">
+                <thead>
+                    <tr>
+
+                        <th class="mytable-td">عنوان</th>
+
+                        <th class="mytable-td">نظر مدیر</th>
+                        <th class="mytable-td">وضعیت</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var post in Model)
+                    {
+
+                        <tr class="PostRow">
+
+                            <td class="mytable-td">
+                                <a asp-area="" asp-action="Index" asp-controller="Post" asp-route-hashId="@hashId.Encode(post.ID)">
+                                    @post.Title
+                                </a>
+                            </td>
+
+                            <td class="mytable-td">
+                                @post.AdminView
+
+                            </td>
+                            <td class="mytable-td">
+                                @if (post.Poststate == PostState.New)
+                                {
+                                    <span>جدید</span>
+                                }
+                                else if (post.Poststate == PostState.Rejected || post.Poststate == PostState.DeletedByAdmin)
+                                {
+                                    <span>حذف / عدم تایید</span>
+                                }
+                                else if (post.Poststate == PostState.Approved)
+                                {
+                                    <span>تایید شد</span>
+                                }
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </main>
+    </div>
+</div>

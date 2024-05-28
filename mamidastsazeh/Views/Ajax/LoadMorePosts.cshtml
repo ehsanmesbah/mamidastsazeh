@@ -1,0 +1,10 @@
+﻿@model int
+
+@{
+    Layout = null;
+}
+
+@for (int i = 0; i < 3; i++)
+{
+    <vc:post-slider post-list-type="category" last-category-id="Model + i"></vc:post-slider>
+}
